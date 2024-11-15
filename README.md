@@ -85,14 +85,6 @@ src/
 └── styles/          # Custom styles
 ```
 
-## Important Notes
-
-- Only @hawaii.edu email addresses can be used for authentication
-- UH Duo 2FA will automatically trigger for @hawaii.edu accounts
-- Never commit your `.env` file
-- Make sure to run `npm run dev` for development
-- Keep your Google OAuth credentials secure
-
 ## Authentication Flow
 
 1. User clicks "Sign in with Google"
