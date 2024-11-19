@@ -1,0 +1,15 @@
+/* src/components/StatCard.module.css */
+.card {
+    padding: 1.5rem;
+  }
+  
+  .number {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #059669;
+    margin-bottom: 0.5rem;
+  }
+  
+  .label {
+    color: #4b5563;
+  }
