@@ -26,16 +26,33 @@
           "**/app/**/*.ts",
           "**/app/**/*.tsx",
           "**/lib/**/*.ts",
-          "**/components/**/*.tsx"
+          "**/components/**/*.tsx",
+          "**/pages/**/*.tsx",
+          "**/pages/**/*.ts",
+          "next.config.js",
+          "next.config.mjs",
+          "playwright.config.ts"
         ],
         "peerDependencies": true,
         "includeInternal": true,
-        "packageDir": "./"
+        "packageDir": "./",
+        "allowModules": ["lucide-react", "nextjs-application-template-1"]
       }
     ],
     "react/function-component-definition": "off",
     "react/jsx-props-no-spreading": "off",
     "react/one-expression-per-line": "off",
     "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   }
 }
