@@ -19,7 +19,15 @@
     "import/no-extraneous-dependencies": [
       "error", 
       {
-        "devDependencies": ["**/*.test.ts", "**/*.spec.ts"],
+        "devDependencies": [
+          "**/*.test.ts", 
+          "**/*.spec.ts",
+          "**/*.tsx",
+          "**/app/**/*.ts",
+          "**/app/**/*.tsx",
+          "**/lib/**/*.ts",
+          "**/components/**/*.tsx"
+        ],
         "peerDependencies": true,
         "includeInternal": true,
         "packageDir": "./"
