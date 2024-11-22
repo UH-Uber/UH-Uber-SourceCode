@@ -116,18 +116,24 @@
   
   .dropdownContent {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 0.5rem);
     right: 0;
-    margin-top: 0.5rem;
     background-color: white;
     border-radius: 0.375rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     min-width: 200px;
-    display: none;
+    padding-top: 0.5rem;
+    margin-top: -0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    display: block; /* Always keep it in the DOM */
+    z-index: 1000; /* Make sure dropdown appears above other content */
   }
   
   .userDropdown:hover .dropdownContent {
-    display: block;
+    opacity: 1;
+    visibility: visible;
   }
   
   .dropdownItem {
