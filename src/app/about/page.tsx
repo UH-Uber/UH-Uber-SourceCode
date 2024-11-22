@@ -4,11 +4,31 @@ import styles from './page.module.css';
 
 export default function AboutPage() {
   const teamMembers = [
-    { name: 'Justin Campos', role: 'Full Stack Developer' },
-    { name: 'Jayda Decker', role: 'UI/UX Designer' },
-    { name: 'Karina Park', role: 'Backend Developer' },
-    { name: 'Lyon Singleton', role: 'Full Stack Developer' },
-    { name: 'Baishen Wang', role: 'Frontend Developer' },
+    { 
+      name: 'Justin Campos', 
+      role: 'Full Stack Developer',
+      image: '/images/team/justin.jpg'
+    },
+    { 
+      name: 'Jayda Decker', 
+      role: 'UI/UX Designer',
+      image: '/images/team/jayda.jpg'
+    },
+    { 
+      name: 'Karina Park', 
+      role: 'Backend Developer',
+      image: '/images/team/karina.jpg'
+    },
+    { 
+      name: 'Lyon Singleton', 
+      role: 'Full Stack Developer',
+      image: '/images/team/lyon.jpg'
+    },
+    { 
+      name: 'Baishen Wang', 
+      role: 'Frontend Developer',
+      image: '/images/team/baishen.png'
+    },
   ];
 
   return (
@@ -66,8 +86,8 @@ export default function AboutPage() {
               <div key={member.name} className={styles.teamCard}>
                 <div className={styles.teamMemberImage}>
                   <img
-                    src="/api/placeholder/150/150"
-                    alt={member.name}
+                    src={member.image}
+                    alt={`${member.name} - ${member.role}`}
                     className={styles.avatar}
                   />
                 </div>
