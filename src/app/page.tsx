@@ -21,7 +21,6 @@ export default function HomePage() {
             <div className={styles.navLinks}>
               <a href="#how-it-works">How It Works</a>
               <a href="#features">Features</a>
-              <a href="#about">About</a>
             </div>
           </div>
         </div>
@@ -116,24 +115,6 @@ export default function HomePage() {
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.container}>
-          <div className={styles.footerGrid}>
-            <div>
-              <h3 className={styles.footerTitle}>Quick Links</h3>
-              <ul className={styles.footerLinks}>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#safety">Safety</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className={styles.footerTitle}>Contact Us</h3>
-              <p className={styles.footerText}>Questions? Reach out to our team!</p>
-              <a href="mailto:support@uhrideshare.com" className={styles.footerEmail}>
-                support@uhrideshare.com
-              </a>
-            </div>
-          </div>
           <div className={styles.footerBottom}>
             <p>&copy; 2024 UH Manoa Ride Share. All rights reserved.</p>
           </div>

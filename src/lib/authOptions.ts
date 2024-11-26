@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 import { compare } from 'bcrypt';
 import { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -15,7 +14,7 @@ const authOptions: NextAuthOptions = {
         email: {
           label: 'Email',
           type: 'email',
-          placeholder: 'john@foo.com',
+          placeholder: 'your.name@hawaii.edu',
         },
         password: { label: 'Password', type: 'password' },
       },
@@ -23,6 +22,12 @@ const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials.password) {
           return null;
         }
+
+        // Check if email is hawaii.edu
+        if (!credentials.email.endsWith('@hawaii.edu')) {
+          throw new Error('Only @hawaii.edu email addresses are allowed');
+        }
+
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
@@ -48,9 +53,7 @@ const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin',
     signOut: '/auth/signout',
-    //   error: '/auth/error',
-    //   verifyRequest: '/auth/verify-request',
-    //   newUser: '/auth/new-user'
+    error: '/auth/error', // Add this line to enable the error page
   },
   callbacks: {
     session: ({ session, token }) => {
