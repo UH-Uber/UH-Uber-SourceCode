@@ -1,4 +1,4 @@
-// components/profile/ProfileHeader.tsx
+import styles from './ProfilePage.module.css';
 interface ProfileHeaderProps {
     user: {
       name: string
@@ -16,7 +16,7 @@ interface ProfileHeaderProps {
             className="w-16 h-16 rounded-full mr-4"
           />
         )}
-        <h3 className="text-2xl font-bold">{user.name}</h3>
+        <h3 className="text-2xl font-bold text-red-500">{user.name}</h3>
       </div>
     )
   }
