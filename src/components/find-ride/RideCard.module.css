@@ -1,0 +1,50 @@
+.card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .driverInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .driverProfile {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .driverImage {
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .requestButton {
+    background-color: #15803d;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .requestButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #166534;
+  }

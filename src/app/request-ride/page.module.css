@@ -1,0 +1,146 @@
+.pageWrapper {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .navigation {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .navContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #15803d;
+    transition: all 0.3s ease;
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .navLinks a {
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .navLinks a:hover {
+    color: #15803d;
+    transform: translateY(-2px);
+  }
+  
+  .mainContent {
+    padding: 2rem 0;
+  }
+  
+  .headerSection {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .pageTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subtitle {
+    color: #6b7280;
+    font-size: 1.1rem;
+  }
+  
+  .contentGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  
+  .formSection {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .formSection:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .infoSection {
+    position: sticky;
+    top: 2rem;
+  }
+  
+  .infoCard {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .infoCard:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .infoCard h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 1rem;
+  }
+  
+  .guidelinesList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .guidelinesList li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+  }
+  
+  .guidelinesList li:last-child {
+    border-bottom: none;
+  }
+  
+  .icon {
+    color: #15803d;
+    flex-shrink: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .contentGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .infoSection {
+      position: static;
+    }
+  }

@@ -21,14 +21,15 @@ export default function ProfilePage() {
         <div className={styles.container}>
           <div className={styles.navContent}>
             <div className={styles.logo}>
-              <span>UH Ride Share</span>
+              <Link href="/" className={styles.logoLink}>
+                <span>UH Ride Share</span>
+              </Link>
             </div>
             <div className={styles.navLinks}>
-              <Link href="">My Ride</Link>
-              <Link href="">Request a Ride</Link>
-              <Link href="">Find a Ride</Link>
-              <Link href="">Account</Link>
-
+              <Link href="/my-ride">My Ride</Link>
+              <Link href="/request-ride">Request a Ride</Link>
+              <Link href="/find-ride">Find a Ride</Link>
+              <Link href="/profile">Account</Link>
             </div>
           </div>
         </div>
