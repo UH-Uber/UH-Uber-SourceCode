@@ -20,10 +20,7 @@ export default function ProfilePage() {
       <nav className={styles.navigation}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <div className={styles.logo}>
-              <Link href="/" className={styles.logoLink}>
-                <span>UH Ride Share</span>
-              </Link>
+            <div className={styles.logo}> 
             </div>
             <div className={styles.navLinks}>
               <Link href="/my-ride">My Ride</Link>

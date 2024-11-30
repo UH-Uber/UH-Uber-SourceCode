@@ -12,7 +12,6 @@ export default function RequestRidePage() {
         <div className={styles.container}>
           <div className={styles.navContent}>
             <div className={styles.logo}>
-              <span>UH Ride Share</span>
             </div>
             <div className={styles.navLinks}>
               <Link href="/profile">My Ride</Link>

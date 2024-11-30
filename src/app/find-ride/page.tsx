@@ -47,9 +47,6 @@ export default function FindRidePage() {
         <div className={styles.container}>
           <div className={styles.navContent}>
             <div className={styles.logo}>
-              <Link href="/" className={styles.logoLink}>
-                <span>UH Ride Share</span>
-              </Link>
             </div>
             <div className={styles.navLinks}>
               <Link href="/my-ride">My Ride</Link>

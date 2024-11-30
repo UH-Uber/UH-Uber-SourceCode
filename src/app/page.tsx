@@ -14,7 +14,6 @@ export default function HomePage() {
         <div className={styles.container}>
           <div className={styles.navContent}>
             <div className={styles.logo}>
-              <span>UH Ride Share</span>
             </div>
 
             {/* Desktop Navigation */}
