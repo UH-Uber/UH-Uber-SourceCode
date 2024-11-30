@@ -2,6 +2,7 @@
 
 import React from 'react';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 import styles from './page.module.css';
 import RideDetails from '@/components/my-ride/RideDetails';
 import RideActions from '@/components/my-ride/RideActions';
@@ -47,6 +48,24 @@ export default function MyRidePage() {
 
   return (
     <div className={styles.pageWrapper}>
+      {/* Navigation */}
+      <nav className={styles.navigation}>
+        <div className={styles.container}>
+          <div className={styles.navContent}>
+            <div className={styles.logo}>
+              <Link href="/" className={styles.logoLink}>
+              </Link>
+            </div>
+            <div className={styles.navLinks}>
+              <Link href="/my-ride">My Ride</Link>
+              <Link href="/request-ride">Request a Ride</Link>
+              <Link href="/find-ride">Find a Ride</Link>
+              <Link href="/profile">Account</Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       <main className={styles.mainContent}>
         <div className={styles.container}>
           <div className={styles.rideGrid}>
