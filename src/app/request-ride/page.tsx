@@ -14,7 +14,7 @@ export default function RequestRidePage() {
             <div className={styles.logo}>
             </div>
             <div className={styles.navLinks}>
-              <Link href="/profile">My Ride</Link>
+              <Link href="/my-ride">My Ride</Link>
               <Link href="/request-ride">Request a Ride</Link>
               <Link href="/find-ride">Find a Ride</Link>
               <Link href="/profile">Account</Link>
