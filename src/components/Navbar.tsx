@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, User } from 'lucide-react';
 import styles from './Navbar.module.css';
 
 const NavBar: React.FC = () => {
@@ -47,6 +47,14 @@ const NavBar: React.FC = () => {
               Contact
             </Link>
 
+            {/* Profile Link - Only shown to logged in users */}
+            {session && (
+              <Link href="/profile" className={`${styles.profileLink} ${pathName === '/profile' ? styles.active : ''}`}>
+                <User size={18} />
+                <span>Profile</span>
+              </Link>
+            )}
+
             {/* Admin Link - Only shown to admin users */}
             {currentUser && role === 'ADMIN' && (
               <Link href="/admin" className={pathName === '/admin' ? styles.active : ''}>
@@ -64,6 +72,9 @@ const NavBar: React.FC = () => {
                   <ChevronDown size={16} />
                 </button>
                 <div className={styles.dropdownContent}>
+                  <Link href="/profile" className={styles.dropdownItem}>
+                    Profile
+                  </Link>
                   <Link href="/auth/change-password" className={styles.dropdownItem}>
                     Change Password
                   </Link>

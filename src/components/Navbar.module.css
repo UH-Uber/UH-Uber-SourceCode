@@ -157,6 +157,28 @@
     cursor: pointer;
     padding: 0.5rem;
   }
+
+
+  
+  .profileLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .profileLink:hover {
+    color: #15803d;
+  }
+
+  .profileLink.active {
+    color: #15803d;
+    font-weight: 600;
+  }
   
   /* Mobile Responsive Styles */
   @media (max-width: 768px) {
@@ -184,4 +206,10 @@
     .authButtons {
       display: none;
     }
+
+    .profileLink {
+      width: 100%;
+      justify-content: flex-start;
+    }
   }
+
