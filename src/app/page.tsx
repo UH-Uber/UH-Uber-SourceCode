@@ -1,13 +1,17 @@
-// src/app/page.tsx
+'use client';
+
 import React from 'react';
 import { Car, Users, Leaf, Shield } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import FeatureCard from '@/components/FeatureCard';
 import StatCard from '@/components/StatCard';
 import StepCard from '@/components/StepCard';
 import styles from './page.module.css';
-import Link from 'next/link';
 
 export default function HomePage() {
+  const { data: session } = useSession();
+
   return (
     <div className={styles.pageWrapper}>
       {/* Navigation */}
@@ -15,14 +19,12 @@ export default function HomePage() {
         <div className={styles.container}>
           <div className={styles.navContent}>
             <div className={styles.logo}>
-              <span>UH Ride Share</span>
             </div>
 
             {/* Desktop Navigation */}
             <div className={styles.navLinks}>
               <a href="#how-it-works">How It Works</a>
               <a href="#features">Features</a>
-              <a href="#about">About</a>
             </div>
           </div>
         </div>
@@ -103,48 +105,27 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
+
 <section className={styles.ctaSection}>
   <div className={styles.container}>
     <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
-    <p className={styles.ctaText}>
-      Join our growing community of UH Manoa commuters today!
-    </p>
-    <div className={styles.buttonContainer}>
-      <Link href="/signup">
-        <a>
+    <p className={styles.ctaText}>Join our growing community of UH Manoa commuters today!</p>
+    {!session && (
+      <div className={styles.buttonContainer}>
+        <Link href="/auth/signup">
           <button type="button" className={styles.ctaButton}>Sign Up Now</button>
-        </a>
-      </Link>
-      <Link href="/signin">
-        <a>
+        </Link>
+        <Link href="/auth/signin">
           <button type="button" className={styles.ctaButtonSecondary}>Sign In</button>
-        </a>
-      </Link>
-    </div>
+        </Link>
+      </div>
+    )}
   </div>
 </section>
 
       {/* Footer */}
       <footer className={styles.footer}>
         <div className={styles.container}>
-          <div className={styles.footerGrid}>
-            <div>
-              <h3 className={styles.footerTitle}>Quick Links</h3>
-              <ul className={styles.footerLinks}>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#safety">Safety</a></li>
-                <li><a href="#contact">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className={styles.footerTitle}>Contact Us</h3>
-              <p className={styles.footerText}>Questions? Reach out to our team!</p>
-              <a href="mailto:support@uhrideshare.com" className={styles.footerEmail}>
-                support@uhrideshare.com
-              </a>
-            </div>
-          </div>
           <div className={styles.footerBottom}>
             <p>&copy; 2024 UH Manoa Ride Share. All rights reserved.</p>
           </div>

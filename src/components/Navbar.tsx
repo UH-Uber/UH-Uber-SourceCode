@@ -1,11 +1,11 @@
-/* eslint-disable react/jsx-indent, @typescript-eslint/indent */
-
 'use client';
 
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import Link from 'next/link';
+import { useState } from 'react';
+import { Menu, X, ChevronDown, User } from 'lucide-react';
+import styles from './Navbar.module.css';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -13,59 +13,90 @@ const NavBar: React.FC = () => {
   const userWithRole = session?.user as { email: string; randomKey: string };
   const role = userWithRole?.randomKey;
   const pathName = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">Next.js Application Template</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto justify-content-start">
-            {currentUser
-              ? [
-                  <Nav.Link id="add-stuff-nav" href="/add" key="add" active={pathName === '/add'}>
-                    Add Stuff
-                  </Nav.Link>,
-                  <Nav.Link id="list-stuff-nav" href="/list" key="list" active={pathName === '/list'}>
-                    List Stuff
-                  </Nav.Link>,
-                ]
-              : ''}
-            {currentUser && role === 'ADMIN' ? (
-              <Nav.Link id="admin-stuff-nav" href="/admin" key="admin" active={pathName === '/admin'}>
+    <nav className={styles.navbar}>
+      <div className={styles.container}>
+        <div className={styles.navContent}>
+          <Link href="/" className={styles.logo}>
+            UH Ride Share
+          </Link>
+
+          {/* Mobile menu button */}
+          <button className={styles.mobileMenuBtn} onClick={toggleMenu}>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Navigation Links - Desktop */}
+          <div className={`${styles.navLinks} ${isOpen ? styles.show : ''}`}>
+            <Link href="/about" className={pathName === '/about' ? styles.active : ''}>
+              About Us
+            </Link>
+            <Link href="/how-it-works" className={pathName === '/how-it-works' ? styles.active : ''}>
+              How It Works
+            </Link>
+            <Link href="/safety" className={pathName === '/safety' ? styles.active : ''}>
+              Safety
+            </Link>
+            <Link href="/contact" className={pathName === '/contact' ? styles.active : ''}>
+              Contact
+            </Link>
+
+            {/* Profile Link - Only shown to logged in users */}
+            {session && (
+              <Link href="/profile" className={`${styles.profileLink} ${pathName === '/profile' ? styles.active : ''}`}>
+                <User size={18} />
+                <span>Profile</span>
+              </Link>
+            )}
+
+            {/* Admin Link - Only shown to admin users */}
+            {currentUser && role === 'ADMIN' && (
+              <Link href="/admin" className={pathName === '/admin' ? styles.active : ''}>
                 Admin
-              </Nav.Link>
-            ) : (
-              ''
+              </Link>
             )}
-          </Nav>
-          <Nav>
+          </div>
+
+          {/* Auth Buttons/Dropdown */}
+          <div className={styles.authContainer}>
             {session ? (
-              <NavDropdown id="login-dropdown" title={currentUser}>
-                <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">
-                  <BoxArrowRight />
-                  Sign Out
-                </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-change-password" href="/auth/change-password">
-                  <Lock />
-                  Change Password
-                </NavDropdown.Item>
-              </NavDropdown>
+              <div className={styles.userDropdown}>
+                <button className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>
+                  {currentUser}
+                  <ChevronDown size={16} />
+                </button>
+                <div className={styles.dropdownContent}>
+                  <Link href="/profile" className={styles.dropdownItem}>
+                    Profile
+                  </Link>
+                  <Link href="/auth/change-password" className={styles.dropdownItem}>
+                    Change Password
+                  </Link>
+                  <Link href="/api/auth/signout" className={styles.dropdownItem}>
+                    Sign Out
+                  </Link>
+                </div>
+              </div>
             ) : (
-              <NavDropdown id="login-dropdown" title="Login">
-                <NavDropdown.Item id="login-dropdown-sign-in" href="/auth/signin">
-                  <PersonFill />
-                  Sign in
-                </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-sign-up" href="/auth/signup">
-                  <PersonPlusFill />
-                  Sign up
-                </NavDropdown.Item>
-              </NavDropdown>
+              <div className={styles.authButtons}>
+                <Link href="/auth/signin" className={styles.signInBtn}>
+                  Sign In
+                </Link>
+                <Link href="/auth/signup" className={styles.signUpBtn}>
+                  Sign Up
+                </Link>
+              </div>
             )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };
 

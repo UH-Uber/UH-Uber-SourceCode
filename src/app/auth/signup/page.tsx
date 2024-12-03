@@ -3,44 +3,34 @@
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as Yup from 'yup';
 import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
 import { createUser } from '@/lib/dbActions';
+import { SignUpSchema } from '@/lib/validationSchemas'; // Import the new schema
 
 type SignUpForm = {
   email: string;
   password: string;
   confirmPassword: string;
-  // acceptTerms: boolean;
 };
 
-/** The sign up page. */
 const SignUp = () => {
-  const validationSchema = Yup.object().shape({
-    email: Yup.string().required('Email is required').email('Email is invalid'),
-    password: Yup.string()
-      .required('Password is required')
-      .min(6, 'Password must be at least 6 characters')
-      .max(40, 'Password must not exceed 40 characters'),
-    confirmPassword: Yup.string()
-      .required('Confirm Password is required')
-      .oneOf([Yup.ref('password'), ''], 'Confirm Password does not match'),
-  });
-
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<SignUpForm>({
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(SignUpSchema), // Use the imported schema instead
   });
 
   const onSubmit = async (data: SignUpForm) => {
-    // console.log(JSON.stringify(data, null, 2));
-    await createUser(data);
-    // After creating, signIn with redirect to the add page
-    await signIn('credentials', { callbackUrl: '/add', ...data });
+    try {
+      await createUser(data);
+      await signIn('credentials', { callbackUrl: '/add', ...data });
+    } catch (error) {
+      // Handle any errors here
+      console.error('Signup error:', error);
+    }
   };
 
   return (
