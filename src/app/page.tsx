@@ -1,12 +1,17 @@
-// src/app/page.tsx
+'use client';
+
 import React from 'react';
 import { Car, Users, Leaf, Shield } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 import FeatureCard from '@/components/FeatureCard';
 import StatCard from '@/components/StatCard';
 import StepCard from '@/components/StepCard';
 import styles from './page.module.css';
 
 export default function HomePage() {
+  const { data: session } = useSession();
+
   return (
     <div className={styles.pageWrapper}>
       {/* Navigation */}
@@ -104,10 +109,16 @@ export default function HomePage() {
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
           <p className={styles.ctaText}>Join our growing community of UH Manoa commuters today!</p>
-          <div className={styles.buttonContainer}>
-            <button type="button" className={styles.ctaButton}>Sign Up Now</button>
-            <button type="button" className={styles.ctaButtonSecondary}>Sign In</button>
-          </div>
+          {!session && (
+            <div className={styles.buttonContainer}>
+              <Link href="/auth/signup">
+                <button type="button" className={styles.ctaButton}>Sign Up Now</button>
+              </Link>
+              <Link href="/auth/signin">
+                <button type="button" className={styles.ctaButtonSecondary}>Sign In</button>
+              </Link>
+            </div>
+          )}
         </div>
       </section>
 
