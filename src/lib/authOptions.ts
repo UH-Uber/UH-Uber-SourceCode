@@ -33,6 +33,7 @@ const authOptions: NextAuthOptions = {
             email: credentials.email,
           },
         });
+
         if (!user) {
           return null;
         }
@@ -43,9 +44,10 @@ const authOptions: NextAuthOptions = {
         }
 
         return {
-          id: `${user.id}`,
+          id: user.id.toString(),
           email: user.email,
-          randomKey: user.role,
+          name: user.name,
+          role: user.role,
         };
       },
     }),
@@ -53,34 +55,28 @@ const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/auth/signin',
     signOut: '/auth/signout',
-    error: '/auth/error', // Add this line to enable the error page
+    error: '/auth/error',
   },
   callbacks: {
-    session: ({ session, token }) => {
-      // console.log('Session Callback', { session, token })
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.id,
-          randomKey: token.randomKey,
-        },
-      };
-    },
-    jwt: ({ token, user }) => {
-      // console.log('JWT Callback', { token, user })
+    async jwt({ token, user }) {
       if (user) {
-        const u = user as unknown as any;
-        return {
-          ...token,
-          id: u.id,
-          randomKey: u.randomKey,
-        };
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+        token.role = user.role;
       }
       return token;
     },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.name = token.name as string | null;
+        session.user.role = token.role;
+      }
+      return session;
+    },
   },
-  secret: process.env.NEXTAUTH_SECRET,
 };
 
 export default authOptions;

@@ -1,84 +1,168 @@
-"use client";
-import { useState } from 'react'
+'use client';
+
+import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import type { User } from '@/types/user';
 
 interface ProfileEditFormProps {
-  user: {
-    name: string
-    email: string
-    image?: string
-  }
+  user: User;
 }
 
 export function ProfileEditForm({ user }: ProfileEditFormProps) {
+  const router = useRouter();
   const [formData, setFormData] = useState({
-    name: user.name,
+    name: user.name || '',
     email: user.email,
-    image: user.image || '',
-  })
+    avatarUrl: user.avatarUrl || '',
+    bio: user.bio || '',
+    phone: user.phone || '',
+    pronouns: user.pronouns || '',
+    campusLocation: user.campusLocation || '',
+  });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }))
-  }
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    // Call API to update user profile
-    console.log('Updating profile:', formData)
-  }
+    try {
+      const response = await fetch('/api/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) throw new Error('Failed to update profile');
+
+      router.refresh();
+      router.push('/profile');
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      alert('Failed to update profile. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 mt-4">
-      <h2 className="text-xl font-semibold mb-4">Edit Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="name" className="block font-medium mb-2">
-            Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="email" className="block font-medium mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="image" className="block font-medium mb-2">
-            Profile Image (URL)
-          </label>
-          <input
-            type="text"
-            id="image"
-            name="image"
-            value={formData.image}
-            onChange={handleInputChange}
-            className="border border-gray-300 p-2 rounded-md w-full"
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md"
-        >
-          Save Changes
-        </button>
-      </form>
-    </div>
-  )
+    <Container>
+      <Card className="mt-4">
+        <Card.Header>
+          <h2>{user.name ? 'Edit Profile' : 'Complete Your Profile'}</h2>
+          {!user.name && (
+            <p className="text-muted">
+              Please complete your profile to continue using UH Manoa Ride Share
+            </p>
+          )}
+        </Card.Header>
+        <Card.Body>
+          <Form onSubmit={handleSubmit}>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    required
+                  />
+                </Form.Group>
+              </Col>
+              
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    value={formData.email}
+                    disabled
+                  />
+                  <Form.Text className="text-muted">
+                    Email cannot be changed
+                  </Form.Text>
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Phone Number</Form.Label>
+                  <Form.Control
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    placeholder="(808) XXX-XXXX"
+                  />
+                </Form.Group>
+              </Col>
+
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Pronouns</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={formData.pronouns}
+                    onChange={(e) => setFormData(prev => ({ ...prev, pronouns: e.target.value }))}
+                    placeholder="e.g., they/them"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Campus Location</Form.Label>
+              <Form.Control
+                type="text"
+                value={formData.campusLocation}
+                onChange={(e) => setFormData(prev => ({ ...prev, campusLocation: e.target.value }))}
+                placeholder="e.g., Manoa Campus"
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Bio</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                value={formData.bio}
+                onChange={(e) => setFormData(prev => ({ ...prev, bio: e.target.value }))}
+                placeholder="Tell us about yourself..."
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3">
+              <Form.Label>Profile Image URL</Form.Label>
+              <Form.Control
+                type="text"
+                value={formData.avatarUrl}
+                onChange={(e) => setFormData(prev => ({ ...prev, avatarUrl: e.target.value }))}
+                placeholder="https://example.com/your-image.jpg"
+              />
+            </Form.Group>
+
+            <div className="d-flex justify-content-end gap-2">
+              {user.name && (
+                <Button
+                  variant="secondary"
+                  onClick={() => router.back()}
+                >
+                  Cancel
+                </Button>
+              )}
+              <Button
+                type="submit"
+                variant="success"
+                disabled={isLoading}
+              >
+                {isLoading ? 'Saving...' : 'Save Changes'}
+              </Button>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
+    </Container>
+  );
 }

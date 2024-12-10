@@ -1,20 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  // for local development
   url      = env("DATABASE_URL")
-  // for Vercel
-  // url       = env("POSTGRES_PRISMA_URL")
-  // directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 enum Role {
@@ -22,14 +12,73 @@ enum Role {
   ADMIN
 }
 
+enum RideStatus {
+  PENDING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
 model User {
-  id        Int    @id @default(autoincrement())
-  email     String @unique
-  password  String
-  role      Role   @default(USER)
-  name      String?  //username
-  avatarUrl String?  //profile picture URL
-  bio       String?  //user bio
+  id            Int       @id @default(autoincrement())
+  email         String    @unique
+  password      String
+  role          Role      @default(USER)
+  name          String?   // username
+  avatarUrl     String?   // profile picture URL
+  bio           String?   // user bio
+  phone         String?   // phone number
+  pronouns      String?   // user pronouns
+  campusLocation String?  // campus location preference
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Ride relationships
+  offeredRides  Ride[]    @relation("DriverRides")
+  bookedRides   RideBooking[] // Rides the user has booked as a passenger
+}
+
+model Ride {
+  id            Int       @id @default(autoincrement())
+  driverId      Int
+  driver        User      @relation("DriverRides", fields: [driverId], references: [id])
+  startLocation String
+  endLocation   String
+  departureTime DateTime
+  availableSeats Int
+  status        RideStatus @default(PENDING)
+  description   String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  
+  // Relationship with bookings
+  bookings      RideBooking[]
+
+  @@index([driverId])
+}
+
+model RideBooking {
+  id          Int        @id @default(autoincrement())
+  rideId      Int
+  ride        Ride       @relation(fields: [rideId], references: [id])
+  passengerId Int
+  passenger   User       @relation(fields: [passengerId], references: [id])
+  status      RideStatus @default(PENDING)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@unique([rideId, passengerId])
+  @@index([rideId])
+  @@index([passengerId])
+}
+
+// Keeping the Stuff model as is for compatibility
+model Stuff {
+  id        Int       @id @default(autoincrement())
+  name      String
+  quantity  Int
+  condition Condition
+  owner     String
 }
 
 enum Condition {
@@ -37,12 +86,4 @@ enum Condition {
   good
   fair
   poor
-}
-
-model Stuff {
-  id        Int       @id @default(autoincrement())
-  name      String
-  quantity  Int
-  condition Condition
-  owner     String
 }
