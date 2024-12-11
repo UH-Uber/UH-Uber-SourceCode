@@ -78,7 +78,12 @@ export default function RideCard({ ride }: RideProps) {
                 <div>
                   <label htmlFor="dropoff">
                     Dropoff
-                    <input id="dropoff" type="text" value={ride.dropoff} readOnly />
+                    <input
+                      id="dropoff"
+                      type="text"
+                      value={ride.dropoff}
+                      readOnly
+                    />
                   </label>
                 </div>
               </div>

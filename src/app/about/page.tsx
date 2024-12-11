@@ -39,19 +39,19 @@ export default function AboutPage() {
         <div className={styles.container}>
           <h1 className={styles.heroTitle}>About UH Manoa Ride Share</h1>
           <p className={styles.heroText}>
-            Building a sustainable and connected campus community through shared transportation
+            Building a sustainable and connected campus community through shared
+            transportation
           </p>
         </div>
 
         {/* Mission Section */}
-        <section className={styles.section}>
-          {/* Existing content */}
-        </section>
+        <section className={styles.section}>{/* Existing content */}</section>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Our Mission</h2>
           <p className={styles.missionText}>
-            UH Manoa Ride Share was created by students, for students, to address the challenges
-            of campus commuting while promoting sustainability and community building.
+            UH Manoa Ride Share was created by students, for students, to
+            address the challenges of campus commuting while promoting
+            sustainability and community building.
           </p>
 
           <div className={styles.valuesGrid}>
@@ -107,7 +107,8 @@ export default function AboutPage() {
           <h2 className={styles.sectionTitle}>Project Status</h2>
           <div className={styles.statusContent}>
             <p>
-              This project is currently in active development. Our team is working on:
+              This project is currently in active development. Our team is
+              working on:
             </p>
             <ul className={styles.statusList}>
               <li>Setting up the development infrastructure</li>

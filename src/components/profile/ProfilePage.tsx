@@ -74,9 +74,7 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
               {user.pronouns && (
                 <p className={styles.profilePronouns}>{user.pronouns}</p>
               )}
-              {user.bio && (
-                <p className={styles.profileBio}>{user.bio}</p>
-              )}
+              {user.bio && <p className={styles.profileBio}>{user.bio}</p>}
               {user.campusLocation && (
                 <div className={styles.infoBox}>
                   <div className={styles.infoRow}>
@@ -115,7 +113,10 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
                   <Link href="/profile/edit" className={styles.primaryButton}>
                     Edit Profile
                   </Link>
-                  <Link href="/auth/change-password" className={styles.secondaryButton}>
+                  <Link
+                    href="/auth/change-password"
+                    className={styles.secondaryButton}
+                  >
                     Change Password
                   </Link>
                 </div>
@@ -134,13 +135,14 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
                             {ride.startLocation}
                             {' '}
                             →
-                            {' '}
                             {ride.endLocation}
                           </p>
                         </div>
                         <div className={styles.rideDetails}>
                           <Clock className={styles.icon} size={16} />
-                          <span>{new Date(ride.departureTime).toLocaleString()}</span>
+                          <span>
+                            {new Date(ride.departureTime).toLocaleString()}
+                          </span>
                         </div>
                         <div className={styles.seats}>
                           <User className={styles.icon} size={16} />
@@ -151,7 +153,10 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
                           </span>
                         </div>
                       </div>
-                      <Link href={`/ride/${ride.id}`} className={styles.viewRideButton}>
+                      <Link
+                        href={`/ride/${ride.id}`}
+                        className={styles.viewRideButton}
+                      >
                         View Details
                       </Link>
                     </div>

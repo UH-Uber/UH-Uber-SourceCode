@@ -26,7 +26,9 @@ export default function RequestRidePage() {
         <div className={styles.container}>
           <div className={styles.headerSection}>
             <h1 className={styles.pageTitle}>Request a Ride</h1>
-            <p className={styles.subtitle}>Fill in the details below to request a ride</p>
+            <p className={styles.subtitle}>
+              Fill in the details below to request a ride
+            </p>
           </div>
 
           <div className={styles.contentGrid}>

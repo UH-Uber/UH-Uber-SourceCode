@@ -12,13 +12,13 @@ interface ProfileDetailsProps {
 const ProfileDetails = ({ user }: ProfileDetailsProps) => (
   <div className={styles.container}>
     {user.image && (
-    <Image
-      src={user.image}
-      alt={`${user.name}'s profile`}
-      className={styles.profileImage}
-      width={100}
-      height={100}
-    />
+      <Image
+        src={user.image}
+        alt={`${user.name}'s profile`}
+        className={styles.profileImage}
+        width={100}
+        height={100}
+      />
     )}
     <h2 className={styles.name}>{user.name}</h2>
     <p className={styles.email}>{user.email}</p>

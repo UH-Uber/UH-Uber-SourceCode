@@ -2,7 +2,15 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Form, Button, Container, Row, Col, Card, Toast } from 'react-bootstrap';
+import {
+  Form,
+  Button,
+  Container,
+  Row,
+  Col,
+  Card,
+  Toast,
+} from 'react-bootstrap';
 import type { User } from '@/types/user';
 
 interface ProfileEditFormProps {
@@ -66,7 +74,7 @@ export default function ProfileEditForm({ user }: ProfileEditFormProps) {
                   <Form.Control
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
                     required
                   />
                 </Form.Group>
@@ -75,11 +83,7 @@ export default function ProfileEditForm({ user }: ProfileEditFormProps) {
               <Col md={6}>
                 <Form.Group className="mb-3">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    value={formData.email}
-                    disabled
-                  />
+                  <Form.Control type="email" value={formData.email} disabled />
                   <Form.Text className="text-muted">
                     Email cannot be changed
                   </Form.Text>
@@ -94,7 +98,10 @@ export default function ProfileEditForm({ user }: ProfileEditFormProps) {
                   <Form.Control
                     type="tel"
                     value={formData.phone}
-                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    onChange={(e) => setFormData((prev) => ({
+                      ...prev,
+                      phone: e.target.value,
+                    }))}
                     placeholder="(808) XXX-XXXX"
                   />
                 </Form.Group>
@@ -106,7 +113,10 @@ export default function ProfileEditForm({ user }: ProfileEditFormProps) {
                   <Form.Control
                     type="text"
                     value={formData.pronouns}
-                    onChange={(e) => setFormData(prev => ({ ...prev, pronouns: e.target.value }))}
+                    onChange={(e) => setFormData((prev) => ({
+                      ...prev,
+                      pronouns: e.target.value,
+                    }))}
                     placeholder="e.g., they/them"
                   />
                 </Form.Group>
@@ -118,7 +128,10 @@ export default function ProfileEditForm({ user }: ProfileEditFormProps) {
               <Form.Control
                 type="text"
                 value={formData.campusLocation}
-                onChange={(e) => setFormData(prev => ({ ...prev, campusLocation: e.target.value }))}
+                onChange={(e) => setFormData((prev) => ({
+                  ...prev,
+                  campusLocation: e.target.value,
+                }))}
                 placeholder="e.g., Manoa Campus"
               />
             </Form.Group>
@@ -129,7 +142,7 @@ export default function ProfileEditForm({ user }: ProfileEditFormProps) {
                 as="textarea"
                 rows={4}
                 value={formData.bio}
-                onChange={(e) => setFormData(prev => ({ ...prev, bio: e.target.value }))}
+                onChange={(e) => setFormData((prev) => ({ ...prev, bio: e.target.value }))}
                 placeholder="Tell us about yourself..."
               />
             </Form.Group>
@@ -139,25 +152,21 @@ export default function ProfileEditForm({ user }: ProfileEditFormProps) {
               <Form.Control
                 type="text"
                 value={formData.avatarUrl}
-                onChange={(e) => setFormData(prev => ({ ...prev, avatarUrl: e.target.value }))}
+                onChange={(e) => setFormData((prev) => ({
+                  ...prev,
+                  avatarUrl: e.target.value,
+                }))}
                 placeholder="https://example.com/your-image.jpg"
               />
             </Form.Group>
 
             <div className="d-flex justify-content-end gap-2">
               {user.name && (
-                <Button
-                  variant="secondary"
-                  onClick={() => router.back()}
-                >
+                <Button variant="secondary" onClick={() => router.back()}>
                   Cancel
                 </Button>
               )}
-              <Button
-                type="submit"
-                variant="success"
-                disabled={isLoading}
-              >
+              <Button type="submit" variant="success" disabled={isLoading}>
                 {isLoading ? 'Saving...' : 'Save Changes'}
               </Button>
             </div>

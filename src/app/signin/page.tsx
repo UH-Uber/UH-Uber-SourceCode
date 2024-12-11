@@ -14,7 +14,10 @@ export default function SignInPage() {
         </div>
         <form className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
               Email
               <input
                 id="email"
@@ -26,7 +29,10 @@ export default function SignInPage() {
           </div>
           <div className="space-y-2">
             ```tsx
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
               <input
                 id="password"

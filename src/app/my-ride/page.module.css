@@ -166,7 +166,8 @@
   margin-bottom: 1.5rem;
 }
 
-.locationInfo, .timeInfo {
+.locationInfo,
+.timeInfo {
   display: flex;
   gap: 1rem;
 }

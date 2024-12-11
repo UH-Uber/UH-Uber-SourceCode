@@ -15,11 +15,13 @@ export default function SearchFilters() {
     recurringOnly: false,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value, type } = e.target;
     const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
 
-    setFilters(prev => ({
+    setFilters((prev) => ({
       ...prev,
       [name]: newValue,
     }));
@@ -41,7 +43,11 @@ export default function SearchFilters() {
     <form className={styles.filtersWrapper}>
       <div className={styles.filterHeader}>
         <h2>Search Filters</h2>
-        <button type="button" onClick={handleReset} className={styles.resetButton}>
+        <button
+          type="button"
+          onClick={handleReset}
+          className={styles.resetButton}
+        >
           <X size={16} />
           Reset
         </button>

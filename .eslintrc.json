@@ -16,12 +16,12 @@
     "no-return-assign": "off",
     "object-curly-newline": "off",
     "prefer-arrow-callback": "off",
-    "import/prefer-default-export": "off",  // Added this line
+    "import/prefer-default-export": "off", // Added this line
     "import/no-extraneous-dependencies": [
-      "error", 
+      "error",
       {
         "devDependencies": [
-          "**/*.test.ts", 
+          "**/*.test.ts",
           "**/*.spec.ts",
           "**/*.tsx",
           "**/app/**/*.ts",

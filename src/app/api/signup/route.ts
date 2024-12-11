@@ -2,7 +2,8 @@ import { NextResponse } from 'next/server';
 import { hash } from 'bcrypt';
 import { prisma } from '@/lib/prisma';
 
-export async function POST(request: Request) { // Default export
+export async function POST(request: Request) {
+  // Default export
   try {
     const { name, email, password } = await request.json();
 
@@ -38,16 +39,16 @@ export async function POST(request: Request) { // Default export
       },
     });
 
-    return NextResponse.json({
-      id: user.id,
-      email: user.email,
-      name: user.name,
-    }, { status: 201 });
+    return NextResponse.json(
+      {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      },
+      { status: 201 },
+    );
   } catch (error) {
     console.error('Signup error:', error);
-    return NextResponse.json(
-      { error: 'Error creating user' },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: 'Error creating user' }, { status: 500 });
   }
 }

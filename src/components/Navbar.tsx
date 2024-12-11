@@ -29,28 +29,47 @@ const NavBar: React.FC = () => {
           </Link>
 
           {/* Mobile menu button */}
-          <button type="button" className={styles.mobileMenuBtn} onClick={toggleMenu}>
+          <button
+            type="button"
+            className={styles.mobileMenuBtn}
+            onClick={toggleMenu}
+          >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
           {/* Navigation Links - Desktop */}
           <div className={`${styles.navLinks} ${isOpen ? styles.show : ''}`}>
-            <Link href="/about" className={pathName === '/about' ? styles.active : ''}>
+            <Link
+              href="/about"
+              className={pathName === '/about' ? styles.active : ''}
+            >
               About Us
             </Link>
-            <Link href="/how-it-works" className={pathName === '/how-it-works' ? styles.active : ''}>
+            <Link
+              href="/how-it-works"
+              className={pathName === '/how-it-works' ? styles.active : ''}
+            >
               How It Works
             </Link>
-            <Link href="/safety" className={pathName === '/safety' ? styles.active : ''}>
+            <Link
+              href="/safety"
+              className={pathName === '/safety' ? styles.active : ''}
+            >
               Safety
             </Link>
-            <Link href="/contact" className={pathName === '/contact' ? styles.active : ''}>
+            <Link
+              href="/contact"
+              className={pathName === '/contact' ? styles.active : ''}
+            >
               Contact
             </Link>
 
             {/* Profile Link - Only shown to logged in users */}
             {session && (
-              <Link href="/profile" className={`${styles.profileLink} ${pathName === '/profile' ? styles.active : ''}`}>
+              <Link
+                href="/profile"
+                className={`${styles.profileLink} ${pathName === '/profile' ? styles.active : ''}`}
+              >
                 <User size={18} />
                 <span>Profile</span>
               </Link>
@@ -58,9 +77,12 @@ const NavBar: React.FC = () => {
 
             {/* Admin Link - Only shown to admin users */}
             {currentUser && userRole === 'ADMIN' && (
-            <Link href="/admin" className={pathName === '/admin' ? styles.active : ''}>
-              Admin
-            </Link>
+              <Link
+                href="/admin"
+                className={pathName === '/admin' ? styles.active : ''}
+              >
+                Admin
+              </Link>
             )}
           </div>
 
@@ -68,7 +90,11 @@ const NavBar: React.FC = () => {
           <div className={styles.authContainer}>
             {session ? (
               <div className={styles.userDropdown}>
-                <button type="button" className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>
+                <button
+                  type="button"
+                  className={styles.dropdownButton}
+                  onClick={() => setIsOpen(!isOpen)}
+                >
                   {currentUser}
                   <ChevronDown size={16} />
                 </button>
@@ -76,10 +102,16 @@ const NavBar: React.FC = () => {
                   <Link href="/profile" className={styles.dropdownItem}>
                     Profile
                   </Link>
-                  <Link href="/auth/change-password" className={styles.dropdownItem}>
+                  <Link
+                    href="/auth/change-password"
+                    className={styles.dropdownItem}
+                  >
                     Change Password
                   </Link>
-                  <Link href="/api/auth/signout" className={styles.dropdownItem}>
+                  <Link
+                    href="/api/auth/signout"
+                    className={styles.dropdownItem}
+                  >
                     Sign Out
                   </Link>
                 </div>

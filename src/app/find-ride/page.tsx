@@ -61,7 +61,9 @@ export default function FindRidePage() {
         <div className={styles.container}>
           <div className={styles.headerSection}>
             <h1 className={styles.pageTitle}>Find a Ride</h1>
-            <p className={styles.subtitle}>Browse available rides from UH Manoa students</p>
+            <p className={styles.subtitle}>
+              Browse available rides from UH Manoa students
+            </p>
           </div>
 
           <div className={styles.contentGrid}>

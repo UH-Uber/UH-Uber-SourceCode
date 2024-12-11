@@ -1,5 +1,13 @@
 import React from 'react';
-import { UserCircle2, Car, Calendar, MapPin, Shield, CreditCard, MessageSquare } from 'lucide-react';
+import {
+  UserCircle2,
+  Car,
+  Calendar,
+  MapPin,
+  Shield,
+  CreditCard,
+  MessageSquare,
+} from 'lucide-react';
 import styles from './page.module.css';
 
 export default function HowItWorksPage() {
@@ -19,7 +27,8 @@ export default function HowItWorksPage() {
     {
       icon: Calendar,
       title: 'Set Your Schedule',
-      description: 'Input your regular commute times or one-time trips to find the perfect ride matches.',
+      description:
+        'Input your regular commute times or one-time trips to find the perfect ride matches.',
       details: [
         'Add your class schedule',
         'Set recurring commute times',
@@ -30,7 +39,8 @@ export default function HowItWorksPage() {
     {
       icon: MapPin,
       title: 'Define Your Route',
-      description: 'Enter your start and end points to find riders along your route.',
+      description:
+        'Enter your start and end points to find riders along your route.',
       details: [
         'Save favorite locations',
         'Set pickup/dropoff preferences',
@@ -41,7 +51,8 @@ export default function HowItWorksPage() {
     {
       icon: Car,
       title: 'Find or Offer Rides',
-      description: 'Browse available rides or post your own to share your commute.',
+      description:
+        'Browse available rides or post your own to share your commute.',
       details: [
         'Search available rides',
         'Post your own rides',
@@ -115,8 +126,9 @@ export default function HowItWorksPage() {
             <Shield className={styles.safetyIcon} />
             <h2 className={styles.safetyTitle}>Your Safety is Our Priority</h2>
             <p className={styles.safetyText}>
-              Every ride is backed by our comprehensive safety features, including user verification,
-              real-time tracking, and our trusted contact system.
+              Every ride is backed by our comprehensive safety features,
+              including user verification, real-time tracking, and our trusted
+              contact system.
             </p>
             <a href="/safety" className={styles.safetyLink}>
               Learn More About Safety Features
@@ -130,7 +142,8 @@ export default function HowItWorksPage() {
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
           <p className={styles.ctaText}>
-            Join our growing community of UH Manoa commuters and start sharing rides today!
+            Join our growing community of UH Manoa commuters and start sharing
+            rides today!
           </p>
           <div className={styles.ctaButtons}>
             <a href="/auth/signup" className={styles.primaryButton}>
