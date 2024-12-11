@@ -41,8 +41,8 @@ export default async function UserProfilePage({
     notFound();
   }
 
-  // Compare the numeric values
-  const isOwnProfile = session.user.id === parsedUserId;
+  // Convert session.user.id to number before comparison
+  const isOwnProfile = parseInt(session.user.id) === parsedUserId;
 
   const safeUser = {
     id: user.id,
