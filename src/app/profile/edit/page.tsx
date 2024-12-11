@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import authOptions from '@/lib/authOptions';
-import { ProfileEditForm } from '@/components/profile/ProfileEditForm';
+import ProfileEditForm from '@/components/profile/ProfileEditForm';
 
 export default async function EditProfilePage() {
   const session = await getServerSession(authOptions);
@@ -12,8 +12,8 @@ export default async function EditProfilePage() {
   }
 
   const user = await prisma.user.findUnique({
-    where: { 
-      email: session.user.email 
+    where: {
+      email: session.user.email,
     },
     select: {
       id: true,
@@ -25,7 +25,7 @@ export default async function EditProfilePage() {
       pronouns: true,
       campusLocation: true,
       offeredRides: true,
-    }
+    },
   });
 
   if (!user) {

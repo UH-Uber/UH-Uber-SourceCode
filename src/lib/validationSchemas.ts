@@ -15,7 +15,6 @@ export const EditStuffSchema = Yup.object({
   owner: Yup.string().required(),
 });
 
-
 export const SignUpSchema = Yup.object().shape({
   email: Yup.string()
     .required('Email is required')

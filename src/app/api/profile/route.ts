@@ -34,7 +34,7 @@ export async function PUT(request: Request) {
   } catch (error) {
     return new NextResponse(
       JSON.stringify({ error: 'Error updating profile' }),
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

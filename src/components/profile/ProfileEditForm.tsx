@@ -2,15 +2,16 @@
 
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Card, Toast } from 'react-bootstrap';
 import type { User } from '@/types/user';
 
 interface ProfileEditFormProps {
   user: User;
 }
 
-export function ProfileEditForm({ user }: ProfileEditFormProps) {
+export default function ProfileEditForm({ user }: ProfileEditFormProps) {
   const router = useRouter();
+  const [showToast, setShowToast] = useState(false);
   const [formData, setFormData] = useState({
     name: user.name || '',
     email: user.email,
@@ -38,7 +39,7 @@ export function ProfileEditForm({ user }: ProfileEditFormProps) {
       router.refresh();
       router.push('/profile');
     } catch (error) {
-      console.error('Error updating profile:', error);
+      setShowToast(true);
       alert('Failed to update profile. Please try again.');
     } finally {
       setIsLoading(false);
@@ -70,7 +71,7 @@ export function ProfileEditForm({ user }: ProfileEditFormProps) {
                   />
                 </Form.Group>
               </Col>
-              
+
               <Col md={6}>
                 <Form.Group className="mb-3">
                   <Form.Label>Email</Form.Label>
@@ -163,6 +164,18 @@ export function ProfileEditForm({ user }: ProfileEditFormProps) {
           </Form>
         </Card.Body>
       </Card>
+      <Toast
+        show={showToast}
+        onClose={() => setShowToast(false)}
+        delay={3000}
+        autohide
+        style={{ position: 'fixed', bottom: 20, right: 20 }}
+      >
+        <Toast.Header>
+          <strong className="me-auto">Error</strong>
+        </Toast.Header>
+        <Toast.Body>Failed to update profile. Please try again.</Toast.Body>
+      </Toast>
     </Container>
   );
 }

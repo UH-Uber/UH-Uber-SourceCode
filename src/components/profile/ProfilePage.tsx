@@ -19,7 +19,7 @@ interface Ride {
   driverId: number;
 }
 
-interface User {
+interface ProfileUser {
   id: number;
   name: string;
   email: string;
@@ -32,7 +32,7 @@ interface User {
 }
 
 interface ProfilePageProps {
-  user: User;
+  user: ProfileUser;
   isOwnProfile: boolean;
 }
 
@@ -42,7 +42,7 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
       <nav className={styles.navigation}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <div className={styles.logo}></div>
+            <div className={styles.logo} />
             <div className={styles.navLinks}>
               <Link href="/my-ride">My Ride</Link>
               <Link href="/request-ride">Request a Ride</Link>
@@ -58,11 +58,11 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
           <h1 className={styles.pageTitle}>
             {isOwnProfile ? 'My Profile' : `${user.name}'s Profile`}
           </h1>
-          
+
           <div className={styles.profileGrid}>
             <div className={styles.profileCard}>
               <div className={styles.profileImageWrapper}>
-                <Image 
+                <Image
                   src={user.avatarUrl || '/images/default-avatar.png'}
                   alt={`${user.name}'s profile`}
                   width={200}
@@ -89,22 +89,22 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
 
             <div className={styles.contactCard}>
               <h3 className={styles.contactTitle}>Contact Information</h3>
-              
+
               <div className={styles.contactInfo}>
                 {user.phone && (
                   <div className={styles.contactRow}>
                     <Phone className={styles.icon} />
                     <div className={styles.contactDetail}>
-                      <label>Phone Number</label>
+                      <span>Phone Number</span>
                       <p>{user.phone}</p>
                     </div>
                   </div>
                 )}
-                
+
                 <div className={styles.contactRow}>
                   <Mail className={styles.icon} />
                   <div className={styles.contactDetail}>
-                    <label>Email Address</label>
+                    <span>Email Address</span>
                     <p>{user.email}</p>
                   </div>
                 </div>
@@ -130,7 +130,13 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
                     <div key={ride.id} className={styles.rideCard}>
                       <div className={styles.rideInfo}>
                         <div className={styles.locations}>
-                          <p>{ride.startLocation} → {ride.endLocation}</p>
+                          <p>
+                            {ride.startLocation}
+                            {' '}
+                            →
+                            {' '}
+                            {ride.endLocation}
+                          </p>
                         </div>
                         <div className={styles.rideDetails}>
                           <Clock className={styles.icon} size={16} />
@@ -138,7 +144,11 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
                         </div>
                         <div className={styles.seats}>
                           <User className={styles.icon} size={16} />
-                          <span>{ride.availableSeats} seats available</span>
+                          <span>
+                            {ride.availableSeats}
+                            {' '}
+                            seats available
+                          </span>
                         </div>
                       </div>
                       <Link href={`/ride/${ride.id}`} className={styles.viewRideButton}>

@@ -7,9 +7,9 @@ interface RideActionsProps {
   onCancelRide: () => void;
 }
 
-const RideActions: React.FC<RideActionsProps> = ({ 
-  onChangeDestination, 
-  onCancelRide 
+const RideActions: React.FC<RideActionsProps> = ({
+  onChangeDestination,
+  onCancelRide,
 }) => {
   const handleCancelClick = () => {
     if (window.confirm('Are you sure you want to cancel this ride?')) {
@@ -19,13 +19,15 @@ const RideActions: React.FC<RideActionsProps> = ({
 
   return (
     <div className={styles.actionButtons}>
-      <button 
+      <button
+        type="button"
         className={styles.primaryButton}
         onClick={onChangeDestination}
       >
         Change Destination
       </button>
-      <button 
+      <button
+        type="button"
         className={styles.cancelButton}
         onClick={handleCancelClick}
       >

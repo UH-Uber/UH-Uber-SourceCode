@@ -1,42 +1,42 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './page.module.css';
 import SearchFilters from '@/components/find-ride/SearchFilters';
 import RideCard from '@/components/find-ride/RideCard';
-import { Car, Calendar, MapPin } from 'lucide-react';
+import { Car } from 'lucide-react';
+import styles from './page.module.css';
 
 // Temporary dummy data - replace with real data later
 const availableRides = [
   {
     id: 1,
     driver: {
-      name: "Sarah Chen",
+      name: 'Sarah Chen',
       rating: 4.8,
-      image: "/photosample.jpeg"
+      image: '/photosample.jpeg',
     },
-    pickup: "Pearl City",
-    dropoff: "UH Manoa Campus",
-    date: "2024-12-02",
-    time: "08:30",
+    pickup: 'Pearl City',
+    dropoff: 'UH Manoa Campus',
+    date: '2024-12-02',
+    time: '08:30',
     seats: 3,
     price: 5,
-    recurring: true
+    recurring: true,
   },
   {
     id: 2,
     driver: {
-      name: "David Kim",
+      name: 'David Kim',
       rating: 4.9,
-      image: "/photosample.jpeg"
+      image: '/photosample.jpeg',
     },
-    pickup: "Kapolei",
-    dropoff: "UH Manoa Campus",
-    date: "2024-12-02",
-    time: "09:00",
+    pickup: 'Kapolei',
+    dropoff: 'UH Manoa Campus',
+    date: '2024-12-02',
+    time: '09:00',
     seats: 2,
     price: 7,
-    recurring: false
-  }
+    recurring: false,
+  },
 ];
 
 export default function FindRidePage() {
@@ -46,8 +46,7 @@ export default function FindRidePage() {
       <nav className={styles.navigation}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <div className={styles.logo}>
-            </div>
+            <div className={styles.logo} />
             <div className={styles.navLinks}>
               <Link href="/my-ride">My Ride</Link>
               <Link href="/request-ride">Request a Ride</Link>

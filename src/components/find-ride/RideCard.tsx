@@ -26,20 +26,16 @@ interface RideProps {
 }
 
 export default function RideCard({ ride }: RideProps) {
-  const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('en-US', {
-      weekday: 'long',
-      month: 'short',
-      day: 'numeric'
-    });
-  };
+  const formatDate = (dateStr: string) => new Date(dateStr).toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'short',
+    day: 'numeric',
+  });
 
-  const formatTime = (timeStr: string) => {
-    return new Date(`2000/01/01 ${timeStr}`).toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit'
-    });
-  };
+  const formatTime = (timeStr: string) => new Date(`2000/01/01 ${timeStr}`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit',
+  });
 
   return (
     <div className={styles.card}>
@@ -73,15 +69,19 @@ export default function RideCard({ ride }: RideProps) {
           <div className={styles.location}>
             <MapPin size={18} />
             <div>
-              <label>Pickup</label>
-              <p>{ride.pickup}</p>
-            </div>
-          </div>
-          <div className={styles.location}>
-            <MapPin size={18} />
-            <div>
-              <label>Dropoff</label>
-              <p>{ride.dropoff}</p>
+              <label htmlFor="pickup">
+                Pickup
+                <input id="pickup" type="text" value={ride.pickup} readOnly />
+              </label>
+              <div className={styles.location}>
+                <MapPin size={18} />
+                <div>
+                  <label htmlFor="dropoff">
+                    Dropoff
+                    <input id="dropoff" type="text" value={ride.dropoff} readOnly />
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -97,17 +97,24 @@ export default function RideCard({ ride }: RideProps) {
           </div>
           <div className={styles.infoItem}>
             <Users size={18} />
-            <span>{ride.seats} seats available</span>
+            <span>
+              {ride.seats}
+              {' '}
+              seats available
+            </span>
           </div>
         </div>
       </div>
 
       <div className={styles.cardFooter}>
         <div className={styles.price}>
-          <span className={styles.priceAmount}>${ride.price}</span>
+          <span className={styles.priceAmount}>
+            $
+            {ride.price}
+          </span>
           <span className={styles.priceLabel}> per person</span>
         </div>
-        <button className={styles.requestButton}>
+        <button type="button" className={styles.requestButton}>
           Request Ride
         </button>
       </div>

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { hash } from 'bcrypt';
 import { prisma } from '@/lib/prisma';
 
-export async function POST(request: Request) {
+export default async function POST(request: Request) {
   try {
     const { name, email, password } = await request.json();
 
@@ -10,19 +10,19 @@ export async function POST(request: Request) {
     if (!email.endsWith('@hawaii.edu')) {
       return NextResponse.json(
         { error: 'Only @hawaii.edu email addresses are allowed' },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     // Check if user already exists
     const existingUser = await prisma.user.findUnique({
-      where: { email }
+      where: { email },
     });
 
     if (existingUser) {
       return NextResponse.json(
         { error: 'User already exists' },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -43,12 +43,11 @@ export async function POST(request: Request) {
       email: user.email,
       name: user.name,
     }, { status: 201 });
-
   } catch (error) {
     console.error('Signup error:', error);
     return NextResponse.json(
       { error: 'Error creating user' },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

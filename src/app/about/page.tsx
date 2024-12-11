@@ -1,33 +1,34 @@
 import React from 'react';
+import Image from 'next/image';
 import { GraduationCap, Car, Heart, Leaf } from 'lucide-react';
 import styles from './page.module.css';
 
 export default function AboutPage() {
   const teamMembers = [
-    { 
-      name: 'Justin Campos', 
+    {
+      name: 'Justin Campos',
       role: 'Full Stack Developer',
-      image: '/images/team/justin.jpg'
+      image: '/images/team/justin.jpg',
     },
-    { 
-      name: 'Jayda Decker', 
+    {
+      name: 'Jayda Decker',
       role: 'UI/UX Designer',
-      image: '/images/team/jayda.jpg'
+      image: '/images/team/jayda.jpg',
     },
-    { 
-      name: 'Karina Park', 
+    {
+      name: 'Karina Park',
       role: 'Backend Developer',
-      image: '/images/team/karina.jpg'
+      image: '/images/team/karina.jpg',
     },
-    { 
-      name: 'Lyon Singleton', 
+    {
+      name: 'Lyon Singleton',
       role: 'Full Stack Developer',
-      image: '/images/team/lyon.jpg'
+      image: '/images/team/lyon.jpg',
     },
-    { 
-      name: 'Baishen Wang', 
+    {
+      name: 'Baishen Wang',
       role: 'Frontend Developer',
-      image: '/images/team/baishen.png'
+      image: '/images/team/baishen.png',
     },
   ];
 
@@ -41,22 +42,23 @@ export default function AboutPage() {
             Building a sustainable and connected campus community through shared transportation
           </p>
         </div>
-      </section>
 
-      {/* Mission Section */}
-      <section className={styles.section}>
+        {/* Mission Section */}
+        <section className={styles.section}>
+          {/* Existing content */}
+        </section>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Our Mission</h2>
           <p className={styles.missionText}>
             UH Manoa Ride Share was created by students, for students, to address the challenges
             of campus commuting while promoting sustainability and community building.
           </p>
-          
+
           <div className={styles.valuesGrid}>
             <div className={styles.valueCard}>
               <GraduationCap className={styles.valueIcon} />
               <h3>Student-Focused</h3>
-              <p>Designed specifically for UH Manoa students' needs</p>
+              <p>Designed specifically for UH Manoa students&apos; needs</p>
             </div>
             <div className={styles.valueCard}>
               <Car className={styles.valueIcon} />
@@ -84,13 +86,13 @@ export default function AboutPage() {
           <div className={styles.teamGrid}>
             {teamMembers.map((member) => (
               <div key={member.name} className={styles.teamCard}>
-                <div className={styles.teamMemberImage}>
-                  <img
-                    src={member.image}
-                    alt={`${member.name} - ${member.role}`}
-                    className={styles.avatar}
-                  />
-                </div>
+                <Image
+                  src={member.image}
+                  alt={`${member.name} - ${member.role}`}
+                  className={styles.avatar}
+                  width={100}
+                  height={100}
+                />
                 <h3 className={styles.teamMemberName}>{member.name}</h3>
                 <p className={styles.teamMemberRole}>{member.role}</p>
               </div>

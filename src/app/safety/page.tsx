@@ -6,54 +6,54 @@ export default function SafetyPage() {
   const safetyFeatures = [
     {
       icon: UserCheck,
-      title: "User Verification",
-      description: "All users must verify their UH Manoa student status using their .edu email and student ID."
+      title: 'User Verification',
+      description: 'All users must verify their UH Manoa student status using their .edu email and student ID.',
     },
     {
       icon: Bell,
-      title: "Real-Time Alerts",
-      description: "Instant notifications for ride updates, delays, or changes to keep everyone informed."
+      title: 'Real-Time Alerts',
+      description: 'Instant notifications for ride updates, delays, or changes to keep everyone informed.',
     },
     {
       icon: MapPin,
-      title: "Location Sharing",
-      description: "Optional real-time location sharing during rides with trusted contacts."
+      title: 'Location Sharing',
+      description: 'Optional real-time location sharing during rides with trusted contacts.',
     },
     {
       icon: Phone,
-      title: "Emergency Assistance",
-      description: "One-tap access to emergency services and campus security contacts."
-    }
+      title: 'Emergency Assistance',
+      description: 'One-tap access to emergency services and campus security contacts.',
+    },
   ];
 
   const guidelines = [
     {
       icon: Clock,
-      title: "Punctuality",
+      title: 'Punctuality',
       points: [
-        "Arrive 5 minutes early to pickup locations",
-        "Notify riders of any delays immediately",
-        "Wait up to 5 minutes at pickup locations"
-      ]
+        'Arrive 5 minutes early to pickup locations',
+        'Notify riders of any delays immediately',
+        'Wait up to 5 minutes at pickup locations',
+      ],
     },
     {
       icon: Users,
-      title: "Communication",
+      title: 'Communication',
       points: [
-        "Use in-app messaging for all communication",
-        "Share trip updates proactively",
-        "Maintain professional and respectful interaction"
-      ]
+        'Use in-app messaging for all communication',
+        'Share trip updates proactively',
+        'Maintain professional and respectful interaction',
+      ],
     },
     {
       icon: Lock,
-      title: "Personal Safety",
+      title: 'Personal Safety',
       points: [
-        "Meet in well-lit, public locations",
-        "Share trip details with trusted contacts",
-        "Trust your instincts and report concerns"
-      ]
-    }
+        'Meet in well-lit, public locations',
+        'Share trip details with trusted contacts',
+        'Trust your instincts and report concerns',
+      ],
+    },
   ];
 
   return (
@@ -124,7 +124,7 @@ export default function SafetyPage() {
               <h3>Support Team</h3>
               <p>App-Related Issues</p>
               <a href="mailto:lyonws@hawaii.edu" className={styles.emergencyEmail}>
-              lyonws@hawaii.edu
+                lyonws@hawaii.edu
               </a>
             </div>
           </div>
@@ -141,7 +141,7 @@ export default function SafetyPage() {
           </p>
           <div className={styles.reportButtons}>
             <a href="/contact" className={styles.primaryButton}>Contact Support</a>
-            <button className={styles.secondaryButton}>Emergency Services</button>
+            <button type="button" className={styles.secondaryButton}>Emergency Services</button>
           </div>
         </div>
       </section>

@@ -5,13 +5,14 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X, ChevronDown, User } from 'lucide-react';
+import { Role } from '@prisma/client';
 import styles from './Navbar.module.css';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
   const currentUser = session?.user?.email;
-  const userWithRole = session?.user as { email: string; randomKey: string };
-  const role = userWithRole?.randomKey;
+  // Update the type casting to match your session user type
+  const userRole = session?.user?.role as Role | undefined;
   const pathName = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,7 +29,7 @@ const NavBar: React.FC = () => {
           </Link>
 
           {/* Mobile menu button */}
-          <button className={styles.mobileMenuBtn} onClick={toggleMenu}>
+          <button type="button" className={styles.mobileMenuBtn} onClick={toggleMenu}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
@@ -56,10 +57,10 @@ const NavBar: React.FC = () => {
             )}
 
             {/* Admin Link - Only shown to admin users */}
-            {currentUser && role === 'ADMIN' && (
-              <Link href="/admin" className={pathName === '/admin' ? styles.active : ''}>
-                Admin
-              </Link>
+            {currentUser && userRole === 'ADMIN' && (
+            <Link href="/admin" className={pathName === '/admin' ? styles.active : ''}>
+              Admin
+            </Link>
             )}
           </div>
 
@@ -67,7 +68,7 @@ const NavBar: React.FC = () => {
           <div className={styles.authContainer}>
             {session ? (
               <div className={styles.userDropdown}>
-                <button className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>
+                <button type="button" className={styles.dropdownButton} onClick={() => setIsOpen(!isOpen)}>
                   {currentUser}
                   <ChevronDown size={16} />
                 </button>

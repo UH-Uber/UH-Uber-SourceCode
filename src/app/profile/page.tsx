@@ -2,7 +2,7 @@ import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 import { prisma } from '@/lib/prisma';
 import authOptions from '@/lib/authOptions';
-import { ProfileEditForm } from '@/components/profile/ProfileEditForm';
+import ProfileEditForm from '@/components/profile/ProfileEditForm';
 import ProfilePage from '@/components/profile/ProfilePage';
 import type { User } from '@/types/user';
 
@@ -15,8 +15,8 @@ export default async function ProfileRoute() {
     }
 
     const userFromDB = await prisma.user.findUnique({
-      where: { 
-        email: session.user.email 
+      where: {
+        email: session.user.email,
       },
       select: {
         id: true,
@@ -28,7 +28,7 @@ export default async function ProfileRoute() {
         pronouns: true,
         campusLocation: true,
         offeredRides: true,
-      }
+      },
     });
 
     if (!userFromDB) {
@@ -57,8 +57,17 @@ export default async function ProfileRoute() {
       );
     }
 
-    return <ProfilePage user={{ ...user, name: user.name || '', avatarUrl: user.avatarUrl || null, offeredRides: user.offeredRides || [] }} isOwnProfile={true} />;
-
+    return (
+      <ProfilePage
+        user={{
+          ...user,
+          name: user.name || '',
+          avatarUrl: user.avatarUrl || null,
+          offeredRides: user.offeredRides || [],
+        }}
+        isOwnProfile
+      />
+    );
   } catch (error) {
     console.error('Error in ProfileRoute:', error);
     redirect('/auth/signin');

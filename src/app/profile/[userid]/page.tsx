@@ -10,17 +10,17 @@ export default async function UserProfilePage({
   params: { userId: string };
 }) {
   const session = await getServerSession(authOptions);
-  
+
   if (!session) {
     redirect('/auth/signin');
   }
 
   // Validate userId
-  if (!userId || isNaN(parseInt(userId))) {
+  if (!userId || Number.isNaN(parseInt(userId, 10))) {
     notFound();
   }
 
-  const parsedUserId = parseInt(userId);
+  const parsedUserId = parseInt(userId, 10);
 
   const user = await prisma.user.findUnique({
     where: { id: parsedUserId },
@@ -42,7 +42,7 @@ export default async function UserProfilePage({
   }
 
   // Convert session.user.id to number before comparison
-  const isOwnProfile = parseInt(session.user.id) === parsedUserId;
+  const isOwnProfile = parseInt(session.user.id, 10) === parsedUserId;
 
   const safeUser = {
     id: user.id,

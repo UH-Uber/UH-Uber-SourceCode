@@ -3,6 +3,37 @@ import { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { prisma } from '@/lib/prisma';
 
+// Define the Role type to match your Prisma schema
+type Role = 'USER' | 'ADMIN';
+
+// Extend the built-in types
+declare module 'next-auth' {
+  interface User {
+    id: string;
+    email: string;
+    name?: string;
+    role: Role;
+  }
+
+  interface Session {
+    user: {
+      id: string;
+      email: string;
+      name?: string;
+      role: Role;
+    };
+  }
+}
+
+declare module 'next-auth/jwt' {
+  interface JWT {
+    id: string;
+    email: string;
+    name?: string;
+    role: Role;
+  }
+}
+
 const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
@@ -23,7 +54,6 @@ const authOptions: NextAuthOptions = {
           return null;
         }
 
-        // Check if email is hawaii.edu
         if (!credentials.email.endsWith('@hawaii.edu')) {
           throw new Error('Only @hawaii.edu email addresses are allowed');
         }
@@ -38,7 +68,11 @@ const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const isPasswordValid = await compare(credentials.password, user.password);
+        const isPasswordValid = await compare(
+          credentials.password,
+          user.password,
+        );
+
         if (!isPasswordValid) {
           return null;
         }
@@ -46,8 +80,8 @@ const authOptions: NextAuthOptions = {
         return {
           id: user.id.toString(),
           email: user.email,
-          name: user.name,
-          role: user.role,
+          name: user.name || undefined,
+          role: user.role as Role,
         };
       },
     }),
@@ -60,31 +94,36 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.email = user.email;
-        token.name = user.name;
-        token.role = user.role;
+        return {
+          ...token,
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.role,
+        };
       }
       return token;
     },
     async session({ session, token }) {
-      if (token) {
-        session.user.id = token.id;
-        session.user.email = token.email;
-        session.user.name = token.name as string | null;
-        session.user.role = token.role;
-      }
-      return session;
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          email: token.email,
+          name: token.name,
+          role: token.role,
+        },
+      };
     },
     async redirect({ url, baseUrl }) {
-      // If it's a sign in callback, redirect to profile page
       if (url.startsWith(baseUrl)) {
-        return '/profile';
+        return `${baseUrl}/profile`;
       }
-      // Default redirect to base url
       return baseUrl;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 export default authOptions;
