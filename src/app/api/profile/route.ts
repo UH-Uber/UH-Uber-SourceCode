@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { prisma } from '@/lib/prisma';
 import authOptions from '@/lib/authOptions';
 
-export async function PUT(request: Request) {
+export default async function PUT(request: Request) {
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -17,7 +17,7 @@ export async function PUT(request: Request) {
     const { name, phone, pronouns, campusLocation, bio, avatarUrl } = body;
 
     const updatedUser = await prisma.user.update({
-      where: { id: parseInt(session.user.id) },
+      where: { id: parseInt(session.user.id, 10) },
       data: {
         name,
         phone,
