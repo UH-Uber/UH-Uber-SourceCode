@@ -112,7 +112,7 @@ export default function ProfilePage({ user, isOwnProfile }: ProfilePageProps) {
 
               {isOwnProfile && (
                 <div className={styles.buttonGroup}>
-                  <Link href={`/profile/${user.id}/edit`} className={styles.primaryButton}>
+                  <Link href="/profile/edit" className={styles.primaryButton}>
                     Edit Profile
                   </Link>
                   <Link href="/auth/change-password" className={styles.secondaryButton}>

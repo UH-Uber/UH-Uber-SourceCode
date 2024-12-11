@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['cdnjs.cloudflare.com', 'media.licdn.com'],
+    domains: ['cdnjs.cloudflare.com', 'media.licdn.com', 'i.imgur.com'],
   },
   webpack: (config) => {
     config.resolve.fallback = {

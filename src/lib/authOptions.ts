@@ -76,6 +76,14 @@ const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    async redirect({ url, baseUrl }) {
+      // If it's a sign in callback, redirect to profile page
+      if (url.startsWith(baseUrl)) {
+        return '/profile';
+      }
+      // Default redirect to base url
+      return baseUrl;
+    },
   },
 };
 
