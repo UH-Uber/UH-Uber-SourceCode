@@ -7,13 +7,14 @@ import ProfilePage from '@/components/profile/ProfilePage';
 import type { User } from '@/types/user';
 
 export default async function ProfileRoute() {
+  const session = await getServerSession(authOptions);
+
+  // If no session, redirect to sign in
+  if (!session?.user?.email) {
+    return redirect('/auth/signin');
+  }
+
   try {
-    const session = await getServerSession(authOptions);
-
-    if (!session?.user?.email) {
-      redirect('/auth/signin');
-    }
-
     const userFromDB = await prisma.user.findUnique({
       where: {
         email: session.user.email,
@@ -31,8 +32,9 @@ export default async function ProfileRoute() {
       },
     });
 
+    // If no user in DB, redirect to sign in
     if (!userFromDB) {
-      redirect('/auth/signin');
+      return redirect('/auth/signin');
     }
 
     const user: User = {
@@ -47,8 +49,10 @@ export default async function ProfileRoute() {
       offeredRides: userFromDB.offeredRides,
     };
 
+    // Check if profile is incomplete
     const isNewProfile = !user.name || !user.phone;
 
+    // If profile is incomplete, show edit form
     if (isNewProfile) {
       return (
         <div className="container mt-4">
@@ -57,6 +61,7 @@ export default async function ProfileRoute() {
       );
     }
 
+    // Show complete profile
     return (
       <ProfilePage
         user={{
@@ -70,6 +75,13 @@ export default async function ProfileRoute() {
     );
   } catch (error) {
     console.error('Error in ProfileRoute:', error);
-    redirect('/auth/signin');
+    // Instead of redirecting on error, show an error message
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-danger">
+          An error occurred while loading your profile. Please try again later.
+        </div>
+      </div>
+    );
   }
 }

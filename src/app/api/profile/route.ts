@@ -6,7 +6,7 @@ import authOptions from '@/lib/authOptions';
 export async function PUT(request: Request) {
   const session = await getServerSession(authOptions);
 
-  if (!session) {
+  if (!session?.user?.email) {
     return new NextResponse(JSON.stringify({ error: 'Not authenticated' }), {
       status: 401,
     });
@@ -17,7 +17,9 @@ export async function PUT(request: Request) {
     const { name, phone, pronouns, campusLocation, bio, avatarUrl } = body;
 
     const updatedUser = await prisma.user.update({
-      where: { id: parseInt(session.user.id, 10) },
+      where: {
+        email: session.user.email, // Use email instead of ID for more reliable lookup
+      },
       data: {
         name,
         phone,
@@ -28,10 +30,14 @@ export async function PUT(request: Request) {
       },
     });
 
-    return new NextResponse(JSON.stringify(updatedUser), {
+    return new NextResponse(JSON.stringify({
+      user: updatedUser,
+      redirect: '/profile', // Add redirect instruction
+    }), {
       status: 200,
     });
   } catch (error) {
+    console.error('Profile update error:', error);
     return new NextResponse(
       JSON.stringify({ error: 'Error updating profile' }),
       { status: 500 },
