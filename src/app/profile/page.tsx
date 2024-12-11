@@ -1,98 +1,87 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Phone, Mail, User, MapPin } from 'lucide-react';
-import styles from './ProfilePage.module.css';
+import { getServerSession } from 'next-auth/next';
+import { redirect } from 'next/navigation';
+import { prisma } from '@/lib/prisma';
+import authOptions from '@/lib/authOptions';
+import ProfileEditForm from '@/components/profile/ProfileEditForm';
+import ProfilePage from '@/components/profile/ProfilePage';
+import type { User } from '@/types/user';
 
-export default function ProfilePage() {
-  const user = {
-    name: 'John Doe',
-    email: 'john@example.com',
-    phone: '(808) 555-1234',
-    image: '/photosample.jpeg',
-    campusLocation: 'Manoa Campus',
-    pronouns: 'she/her', 
+export default async function ProfileRoute() {
+  const session = await getServerSession(authOptions);
+
+  // If no session, redirect to sign in
+  if (!session?.user?.email) {
+    return redirect('/auth/signin');
   }
 
-  return (
-    <div className={styles.pageWrapper}>
-      {/* Navigation */}
-      <nav className={styles.navigation}>
-        <div className={styles.container}>
-          <div className={styles.navContent}>
-            <div className={styles.logo}> 
-            </div>
-            <div className={styles.navLinks}>
-              <Link href="/my-ride">My Ride</Link>
-              <Link href="/request-ride">Request a Ride</Link>
-              <Link href="/find-ride">Find a Ride</Link>
-              <Link href="/profile">Account</Link>
-            </div>
-          </div>
+  try {
+    const userFromDB = await prisma.user.findUnique({
+      where: {
+        email: session.user.email,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        avatarUrl: true,
+        bio: true,
+        phone: true,
+        pronouns: true,
+        campusLocation: true,
+        offeredRides: true,
+      },
+    });
+
+    // If no user in DB, redirect to sign in
+    if (!userFromDB) {
+      return redirect('/auth/signin');
+    }
+
+    const user: User = {
+      id: userFromDB.id,
+      email: session.user.email,
+      name: userFromDB.name,
+      avatarUrl: userFromDB.avatarUrl,
+      bio: userFromDB.bio ?? null,
+      phone: userFromDB.phone ?? null,
+      pronouns: userFromDB.pronouns ?? null,
+      campusLocation: userFromDB.campusLocation ?? null,
+      offeredRides: userFromDB.offeredRides,
+    };
+
+    // Check if profile is incomplete
+    const isNewProfile = !user.name || !user.phone;
+
+    // If profile is incomplete, show edit form
+    if (isNewProfile) {
+      return (
+        <div className="container mt-4">
+          <ProfileEditForm user={user} />
         </div>
-      </nav>
+      );
+    }
 
-      {/* Main Content */}
-      <main className={styles.mainContent}>
-        <div className={styles.container}>
-          <h1 className={styles.pageTitle}>My Account</h1>
-          
-          <div className={styles.profileGrid}>
-            {/* Left Column - Profile Overview */}
-            <div className={styles.profileCard}>
-              <div className={styles.profileImageWrapper}>
-                <Image 
-                  src={user.image}
-                  alt={`${user.name}'s profile`}
-                  width={200}
-                  height={200}
-                  className={styles.profileImage}
-                />
-              </div>
-              <h2 className={styles.profileName}>{user.name}</h2>
-              <p className={styles.profilePronouns}>{user.pronouns}</p>
-              <div className={styles.infoBox}>
-                <div className={styles.infoRow}>
-                  <MapPin className={styles.icon} size={20} />
-                  <span>{user.campusLocation}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Contact Details */}
-            <div className={styles.contactCard}>
-              <h3 className={styles.contactTitle}>Basic Info</h3>
-              
-              <div className={styles.contactInfo}>
-                <div className={styles.contactRow}>
-                  <Phone className={styles.icon} />
-                  <div className={styles.contactDetail}>
-                    <label>Phone Number</label>
-                    <p>{user.phone}</p>
-                  </div>
-                </div>
-                
-                <div className={styles.contactRow}>
-                  <Mail className={styles.icon} />
-                  <div className={styles.contactDetail}>
-                    <label>Email Address</label>
-                    <p>{user.email}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className={styles.buttonGroup}>
-                <button className={styles.primaryButton}>
-                  Edit Profile
-                </button>
-                <button className={styles.secondaryButton}>
-                  Change Password
-                </button>
-              </div>
-            </div>
-          </div>
+    // Show complete profile
+    return (
+      <ProfilePage
+        user={{
+          ...user,
+          name: user.name || '',
+          avatarUrl: user.avatarUrl || null,
+          offeredRides: user.offeredRides || [],
+        }}
+        isOwnProfile
+      />
+    );
+  } catch (error) {
+    console.error('Error in ProfileRoute:', error);
+    // Instead of redirecting on error, show an error message
+    return (
+      <div className="container mt-4">
+        <div className="alert alert-danger">
+          An error occurred while loading your profile. Please try again later.
         </div>
-      </main>
-    </div>
-  );
+      </div>
+    );
+  }
 }

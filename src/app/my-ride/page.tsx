@@ -3,14 +3,14 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import styles from './page.module.css';
 import RideDetails from '@/components/my-ride/RideDetails';
 import RideActions from '@/components/my-ride/RideActions';
+import styles from './page.module.css';
 
 // Dynamically import the map component to avoid SSR issues
 const RideMap = dynamic(() => import('@/components/my-ride/RideMap'), {
   ssr: false,
-  loading: () => <div className={styles.mapPlaceholder}>Loading map...</div>
+  loading: () => <div className={styles.mapPlaceholder}>Loading map...</div>,
 });
 
 export default function MyRidePage() {
@@ -26,14 +26,14 @@ export default function MyRidePage() {
       model: 'Camry',
       color: 'Silver',
       licensePlate: 'ABC 123',
-      year: '2020'
+      year: '2020',
     },
     ride: {
       pickup: 'UH Mānoa Campus Center',
       destination: 'Ala Moana Center',
       estimatedArrival: '10:45 AM',
-      status: 'en-route'
-    }
+      status: 'en-route',
+    },
   };
 
   const handleChangeDestination = () => {
@@ -53,8 +53,7 @@ export default function MyRidePage() {
         <div className={styles.container}>
           <div className={styles.navContent}>
             <div className={styles.logo}>
-              <Link href="/" className={styles.logoLink}>
-              </Link>
+              <Link href="/" className={styles.logoLink} />
             </div>
             <div className={styles.navLinks}>
               <Link href="/my-ride">My Ride</Link>

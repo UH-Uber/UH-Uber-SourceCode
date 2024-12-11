@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
-import styles from './page.module.css';
 import RequestForm from '@/components/request-ride/RequestForm';
 import { Car, Calendar, Clock, MapPin } from 'lucide-react';
+import styles from './page.module.css';
 
 export default function RequestRidePage() {
   return (
@@ -11,8 +11,7 @@ export default function RequestRidePage() {
       <nav className={styles.navigation}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <div className={styles.logo}>
-            </div>
+            <div className={styles.logo} />
             <div className={styles.navLinks}>
               <Link href="/my-ride">My Ride</Link>
               <Link href="/request-ride">Request a Ride</Link>
@@ -27,14 +26,16 @@ export default function RequestRidePage() {
         <div className={styles.container}>
           <div className={styles.headerSection}>
             <h1 className={styles.pageTitle}>Request a Ride</h1>
-            <p className={styles.subtitle}>Fill in the details below to request a ride</p>
+            <p className={styles.subtitle}>
+              Fill in the details below to request a ride
+            </p>
           </div>
 
           <div className={styles.contentGrid}>
             <div className={styles.formSection}>
               <RequestForm />
             </div>
-            
+
             <div className={styles.infoSection}>
               <div className={styles.infoCard}>
                 <h3>Request Guidelines</h3>

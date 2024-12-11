@@ -1,164 +1,164 @@
 .pageContainer {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
-    flex: 1 0 auto;
-  }
-  
-  .hero {
-    background-color: #15803d;
-    color: #ffffff;
-    padding: 4rem 1rem;
-    text-align: center;
-  }
-  
-  .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .heroTitle {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .heroText {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .section {
-    padding: 4rem 0;
-  }
-  
-  .sectionTitle {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
-  }
-  
-  .missionText {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    font-size: 1.125rem;
-    color: #4b5563;
-  }
-  
-  .valuesGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  
-  .valueCard {
-    padding: 2rem;
-    text-align: center;
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .valueCard:hover {
-    transform: translateY(-5px);
-  }
-  
-  .valueIcon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 1rem;
-    color: #15803d;
-  }
-  
-  .valueCard h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  
-  .valueCard p {
-    color: #4b5563;
-  }
-  
-  .teamGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  
-  .teamCard {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .teamMemberImage {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 1rem;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  
-  .avatar {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .teamMemberName {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #333;
-  }
-  
-  .teamMemberRole {
-    color: #4b5563;
-  }
-  
-  .statusContent {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .statusList {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-    text-align: left;
-    display: inline-block;
-  }
-  
-  .statusList li {
-    margin: 0.75rem 0;
-    padding-left: 1.5rem;
-    position: relative;
-    color: #4b5563;
-  }
-  
-  .statusList li::before {
-    content: "•";
-    color: #15803d;
-    font-weight: bold;
-    position: absolute;
-    left: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  flex: 1 0 auto;
+}
+
+.hero {
+  background-color: #15803d;
+  color: #ffffff;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.heroText {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.missionText {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.valueCard {
+  padding: 2rem;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-5px);
+}
+
+.valueIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+  color: #15803d;
+}
+
+.valueCard h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.valueCard p {
+  color: #4b5563;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.teamCard {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.teamMemberImage {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teamMemberName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.teamMemberRole {
+  color: #4b5563;
+}
+
+.statusContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.statusList {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  text-align: left;
+  display: inline-block;
+}
+
+.statusList li {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #4b5563;
+}
+
+.statusList li::before {
+  content: '•';
+  color: #15803d;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
