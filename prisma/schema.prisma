@@ -23,13 +23,15 @@ enum Role {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  email     String @unique
-  password  String
-  role      Role   @default(USER)
-  name      String?  //username
-  avatarUrl String?  //profile picture URL
-  bio       String?  //user bio
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  password      String
+  role          Role          @default(USER)
+  name          String?       // username
+  avatarUrl     String?       // profile picture URL
+  bio           String?       // user bio
+  driverRides   RideRequest[] @relation("DriverRides")
+  riderRides    RideRequest[] @relation("RiderRides")
 }
 
 enum Condition {
@@ -45,4 +47,30 @@ model Stuff {
   quantity  Int
   condition Condition
   owner     String
+}
+
+enum RideStatus {
+  PENDING
+  ACCEPTED
+  COMPLETED
+  CANCELLED
+}
+
+model RideRequest {
+  id          Int         @id @default(autoincrement())
+  pickup      String
+  dropoff     String
+  date        String
+  time        String
+  seats       Int
+  notes       String?
+  status      RideStatus  @default(PENDING)
+  price       Float       @default(5.00)
+  recurring   Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  
+  // Relations
+  driverId    Int
+  driver      User        @relation("DriverRides", fields: [driverId], references: [id])
+  riders      User[]      @relation("RiderRides")
 }

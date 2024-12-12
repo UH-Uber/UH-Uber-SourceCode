@@ -97,7 +97,7 @@ export default function RideCard({ ride }: RideProps) {
           </div>
           <div className={styles.infoItem}>
             <Users size={18} />
-            <span>{ride.seats} seats available</span>
+            <span>{ride.seats} seats</span>
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function RideCard({ ride }: RideProps) {
           <span className={styles.priceLabel}> per person</span>
         </div>
         <button className={styles.requestButton}>
-          Request Ride
+          Accept Ride
         </button>
       </div>
     </div>
