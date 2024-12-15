@@ -39,8 +39,13 @@ export default function HomePage() {
               Connect with fellow students for sustainable and affordable campus commuting
             </p>
             <div className={styles.buttonContainer}>
+            <a href="/GetStarted.html">
               <button type="button" className={styles.primaryButton}>Get Started</button>
+              
+            </a>
+            <a href="/LearnMore.html">
               <button type="button" className={styles.secondaryButton}>Learn More</button>
+            </a>
             </div>
           </div>
         </div>
