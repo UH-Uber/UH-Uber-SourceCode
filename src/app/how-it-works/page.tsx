@@ -1,75 +1,87 @@
 import React from 'react';
-import { UserCircle2, Car, Calendar, MapPin, Shield, CreditCard, MessageSquare } from 'lucide-react';
+import {
+  UserCircle2,
+  Car,
+  Calendar,
+  MapPin,
+  Shield,
+  CreditCard,
+  MessageSquare,
+} from 'lucide-react';
 import styles from './page.module.css';
 
 export default function HowItWorksPage() {
   const steps = [
     {
       icon: UserCircle2,
-      title: "Create Your Profile",
-      description: "Sign up with your UH credentials and set up your profile with your preferences, schedule, and verification details.",
+      title: 'Create Your Profile',
+      description: `Sign up with your UH credentials and set up your profile with your preferences,
+        schedule, and verification details.`,
       details: [
-        "Use your @hawaii.edu email",
-        "Add your profile photo and bio",
-        "Set your commute preferences",
-        "Complete safety verification"
-      ]
+        'Use your @hawaii.edu email',
+        'Add your profile photo and bio',
+        'Set your commute preferences',
+        'Complete safety verification',
+      ],
     },
     {
       icon: Calendar,
-      title: "Set Your Schedule",
-      description: "Input your regular commute times or one-time trips to find the perfect ride matches.",
+      title: 'Set Your Schedule',
+      description:
+        'Input your regular commute times or one-time trips to find the perfect ride matches.',
       details: [
-        "Add your class schedule",
-        "Set recurring commute times",
-        "Specify flexibility windows",
-        "Update as needed"
-      ]
+        'Add your class schedule',
+        'Set recurring commute times',
+        'Specify flexibility windows',
+        'Update as needed',
+      ],
     },
     {
       icon: MapPin,
-      title: "Define Your Route",
-      description: "Enter your start and end points to find riders along your route.",
+      title: 'Define Your Route',
+      description:
+        'Enter your start and end points to find riders along your route.',
       details: [
-        "Save favorite locations",
-        "Set pickup/dropoff preferences",
-        "View suggested routes",
-        "Adjust for traffic patterns"
-      ]
+        'Save favorite locations',
+        'Set pickup/dropoff preferences',
+        'View suggested routes',
+        'Adjust for traffic patterns',
+      ],
     },
     {
       icon: Car,
-      title: "Find or Offer Rides",
-      description: "Browse available rides or post your own to share your commute.",
+      title: 'Find or Offer Rides',
+      description:
+        'Browse available rides or post your own to share your commute.',
       details: [
-        "Search available rides",
-        "Post your own rides",
-        "Set seat availability",
-        "Specify vehicle details"
-      ]
+        'Search available rides',
+        'Post your own rides',
+        'Set seat availability',
+        'Specify vehicle details',
+      ],
     },
     {
       icon: MessageSquare,
-      title: "Connect & Coordinate",
-      description: "Chat with potential ride matches and confirm trip details.",
+      title: 'Connect & Coordinate',
+      description: 'Chat with potential ride matches and confirm trip details.',
       details: [
-        "In-app messaging",
-        "Confirm pickup times",
-        "Share trip updates",
-        "Rate your experience"
-      ]
+        'In-app messaging',
+        'Confirm pickup times',
+        'Share trip updates',
+        'Rate your experience',
+      ],
     },
     {
       icon: CreditCard,
-      title: "Share Costs",
-      description: "Split travel expenses fairly and easily through the app.",
+      title: 'Share Costs',
+      description: 'Split travel expenses fairly and easily through the app.',
       details: [
-        "Automated cost splitting",
-        "Transparent pricing",
-        "Multiple payment options",
-        "Trip cost estimates"
-      ]
-    }
+        'Automated cost splitting',
+        'Transparent pricing',
+        'Multiple payment options',
+        'Trip cost estimates',
+      ],
+    },
   ];
 
   return (
@@ -114,8 +126,9 @@ export default function HowItWorksPage() {
             <Shield className={styles.safetyIcon} />
             <h2 className={styles.safetyTitle}>Your Safety is Our Priority</h2>
             <p className={styles.safetyText}>
-              Every ride is backed by our comprehensive safety features, including user verification,
-              real-time tracking, and our trusted contact system.
+              Every ride is backed by our comprehensive safety features,
+              including user verification, real-time tracking, and our trusted
+              contact system.
             </p>
             <a href="/safety" className={styles.safetyLink}>
               Learn More About Safety Features
@@ -129,7 +142,8 @@ export default function HowItWorksPage() {
         <div className={styles.container}>
           <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
           <p className={styles.ctaText}>
-            Join our growing community of UH Manoa commuters and start sharing rides today!
+            Join our growing community of UH Manoa commuters and start sharing
+            rides today!
           </p>
           <div className={styles.ctaButtons}>
             <a href="/auth/signup" className={styles.primaryButton}>

@@ -1,21 +1,24 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
+import { Mail, MapPin, Clock, MessageSquare } from 'lucide-react';
 import styles from './page.module.css';
 
 export default function ContactPage() {
   const faqs = [
     {
-      question: "How quickly will I receive a response?",
-      answer: "We aim to respond to all inquiries within 24 hours during business days."
+      question: 'How quickly will I receive a response?',
+      answer:
+        'We aim to respond to all inquiries within 24 hours during business days.',
     },
     {
-      question: "What if I need immediate assistance?",
-      answer: "For urgent matters, please contact Campus Security at (808) 956-6911."
+      question: 'What if I need immediate assistance?',
+      answer:
+        'For urgent matters, please contact Campus Security at (808) 956-6911.',
     },
     {
-      question: "Can I report an issue with a ride?",
-      answer: "Yes, use our contact form and select 'Report an Issue' from the subject dropdown."
-    }
+      question: 'Can I report an issue with a ride?',
+      answer:
+        "Yes, use our contact form and select 'Report an Issue' from the subject dropdown.",
+    },
   ];
 
   return (
@@ -25,7 +28,7 @@ export default function ContactPage() {
         <div className={styles.container}>
           <h1 className={styles.heroTitle}>Contact Us</h1>
           <p className={styles.heroText}>
-            Have questions or need assistance? We're here to help!
+            Have questions or need assistance? We&apos;re here to help!
           </p>
         </div>
       </section>
@@ -36,7 +39,7 @@ export default function ContactPage() {
             {/* Contact Information */}
             <div className={styles.contactInfo}>
               <h2 className={styles.sectionTitle}>Get in Touch</h2>
-              
+
               <div className={styles.infoCard}>
                 <Mail className={styles.infoIcon} />
                 <div>
@@ -49,9 +52,13 @@ export default function ContactPage() {
                 <MapPin className={styles.infoIcon} />
                 <div>
                   <h3>Location</h3>
-                  <p>Department of Information and Computer Sciences<br />
-                     University of Hawaii at Manoa<br />
-                     Honolulu, HI 96822</p>
+                  <p>
+                    Department of Information and Computer Sciences
+                    <br />
+                    University of Hawaii at Manoa
+                    <br />
+                    Honolulu, HI 96822
+                  </p>
                 </div>
               </div>
 
@@ -59,8 +66,11 @@ export default function ContactPage() {
                 <Clock className={styles.infoIcon} />
                 <div>
                   <h3>Support Hours</h3>
-                  <p>Monday - Friday<br />
-                     9:00 AM - 5:00 PM HST</p>
+                  <p>
+                    Monday - Friday
+                    <br />
+                    9:00 AM - 5:00 PM HST
+                  </p>
                 </div>
               </div>
             </div>
@@ -70,29 +80,36 @@ export default function ContactPage() {
               <h2 className={styles.sectionTitle}>Send us a Message</h2>
               <form className={styles.form}>
                 <div className={styles.formGroup}>
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                  />
+                  <label htmlFor="name">
+                    Name
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </label>
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                  />
+                  <label htmlFor="email">
+                    Email
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                    />
+                  </label>
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="subject">Subject</label>
+                  <label htmlFor="subject">
+                    Subject
+                    {/* Removed duplicated subject select */}
+                  </label>
                   <select id="subject" name="subject" required>
                     <option value="">Select a Subject</option>
                     <option value="general">General Inquiry</option>
@@ -103,14 +120,16 @@ export default function ContactPage() {
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Your Message"
-                    required
-                  ></textarea>
+                  <label htmlFor="message">
+                    Message
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={5}
+                      placeholder="Your Message"
+                      required
+                    />
+                  </label>
                 </div>
 
                 <button type="submit" className={styles.submitButton}>
@@ -124,8 +143,8 @@ export default function ContactPage() {
           <section className={styles.faqSection}>
             <h2 className={styles.sectionTitle}>Frequently Asked Questions</h2>
             <div className={styles.faqGrid}>
-              {faqs.map((faq, index) => (
-                <div key={index} className={styles.faqCard}>
+              {faqs.map((faq) => (
+                <div key={faq.question} className={styles.faqCard}>
                   <MessageSquare className={styles.faqIcon} />
                   <h3>{faq.question}</h3>
                   <p>{faq.answer}</p>

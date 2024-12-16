@@ -18,8 +18,7 @@ export default function HomePage() {
       <nav className={styles.navigation}>
         <div className={styles.container}>
           <div className={styles.navContent}>
-            <div className={styles.logo}>
-            </div>
+            <div className={styles.logo} />
 
             {/* Desktop Navigation */}
             <div className={styles.navLinks}>
@@ -36,16 +35,16 @@ export default function HomePage() {
           <div className={styles.heroContent}>
             <h1 className={styles.heroTitle}>UH Manoa Ride Share</h1>
             <p className={styles.heroText}>
-              Connect with fellow students for sustainable and affordable campus commuting
+              Connect with fellow students for sustainable and affordable campus
+              commuting
             </p>
             <div className={styles.buttonContainer}>
-            <a href="/GetStarted.html">
-              <button type="button" className={styles.primaryButton}>Get Started</button>
-              
-            </a>
-            <a href="/LearnMore.html">
-              <button type="button" className={styles.secondaryButton}>Learn More</button>
-            </a>
+              <button type="button" className={styles.primaryButton}>
+                Get Started
+              </button>
+              <button type="button" className={styles.secondaryButton}>
+                Learn More
+              </button>
             </div>
           </div>
         </div>
@@ -111,22 +110,28 @@ export default function HomePage() {
 
       {/* CTA Section */}
 
-<section className={styles.ctaSection}>
-  <div className={styles.container}>
-    <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
-    <p className={styles.ctaText}>Join our growing community of UH Manoa commuters today!</p>
-    {!session && (
-      <div className={styles.buttonContainer}>
-        <Link href="/auth/signup">
-          <button type="button" className={styles.ctaButton}>Sign Up Now</button>
-        </Link>
-        <Link href="/auth/signin">
-          <button type="button" className={styles.ctaButtonSecondary}>Sign In</button>
-        </Link>
-      </div>
-    )}
-  </div>
-</section>
+      <section className={styles.ctaSection}>
+        <div className={styles.container}>
+          <h2 className={styles.ctaTitle}>Ready to Get Started?</h2>
+          <p className={styles.ctaText}>
+            Join our growing community of UH Manoa commuters today!
+          </p>
+          {!session && (
+            <div className={styles.buttonContainer}>
+              <Link href="/auth/signup">
+                <button type="button" className={styles.ctaButton}>
+                  Sign Up Now
+                </button>
+              </Link>
+              <Link href="/auth/signin">
+                <button type="button" className={styles.ctaButtonSecondary}>
+                  Sign In
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className={styles.footer}>
