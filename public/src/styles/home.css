@@ -1,0 +1,230 @@
+/* src/app/page.module.css */
+.hero {
+    background-color: #15803d;  /* Darker green for better contrast */
+    color: #ffffff;
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  
+  .heroContent {
+    max-width: 64rem;
+    margin: 0 auto;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .heroText {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .buttonContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .primaryButton {
+    background-color: #ffffff;
+    color: #15803d;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .primaryButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9fafb;
+  }
+  
+  .secondaryButton {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .secondaryButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .ctaSection {
+    background-color: #15803d;
+    padding: 4rem 1rem;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .ctaButton {
+    background-color: #ffffff;
+    color: #15803d;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ctaButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9fafb;
+  }
+  
+  .ctaButtonSecondary {
+    background-color: transparent;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ctaButtonSecondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Container and other utility classes */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Add these styles to your page.module.css */
+  
+  .navigation {
+    background-color: white;
+    padding: 1rem 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #15803d; /* Dark green */
+  }
+  
+  .navLinks {
+    display: flex;
+    gap: 2rem; /* Increased spacing between links */
+    align-items: center;
+  }
+  
+  .navLinks a {
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    padding: 0.5rem;
+  }
+  
+  .navLinks a:hover {
+    color: #15803d;
+  }
+  
+  .featuresSection,
+  .statsSection,
+  .stepsSection {
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%; /* This ensures some margin on the sides */
+  }
+  
+  .statsSection {
+    background-color: transparent; /* Remove the background color if any */
+    text-align: center;
+  }
+  
+  .statsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 0 auto;
+    max-width: 900px; /* Adjust based on your needs */
+  }
+  
+  .stepsSection {
+    text-align: left;
+  }
+  
+  .stepsContainer {
+    max-width: 800px; /* Adjust based on your needs */
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #333;
+  }
+  
+  /* Update the stat card styles */
+  .statNumber {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #15803d; /* Your green color */
+    margin-bottom: 0.5rem;
+  }
+  
+  .statLabel {
+    color: #4b5563;
+    font-size: 1.1rem;
+  }
+  
+  /* Feature card grid */
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .pageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    flex: 1 0 auto;
+  }

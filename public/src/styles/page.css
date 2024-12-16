@@ -1,0 +1,85 @@
+
+.stepsSection {
+    padding: 4rem 0;
+    background-color: #f9fafb;
+  }
+  
+  .stepCard {
+    display: flex;
+    align-items: flex-start;
+    background-color: #ffffff;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+  
+  .stepCard:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stepNumber {
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #15803d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .stepIcon {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1.5rem;
+    color: #15803d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .stepContent {
+    flex-grow: 1;
+  }
+  
+  .stepTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .stepDescription {
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  
+  .stepDetails {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .stepDetails li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: #6b7280;
+  }
+  
+  .stepDetails li::before {
+    content: "•";
+    color: #15803d;
+    position: absolute;
+    left: 0;
+  }

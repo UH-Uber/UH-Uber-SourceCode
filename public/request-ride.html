@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a Ride</title>
+    <link rel="stylesheet" href="src/styles/home.css">
+</head>
+<body>
+    <div class="pageContainer">
+        <nav class="navigation">
+            <div class="container navContent">
+                <div class="logo">RideShare</div>
+                <div class="navLinks">
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container heroContent">
+                <h1 class="heroTitle">Request a Ride</h1>
+                
+                <form class="rideForm">
+                    <div class="formGroup">
+                        <label for="pickup" class="formLabel">Pickup Location</label>
+                        <input 
+                            id="pickup"
+                            type="text" 
+                            class="formInput" 
+                            required 
+                            aria-label="Enter your pickup location"
+                        />
+                    </div>
+                    
+                    <div class="formGroup">
+                        <label for="dropoff" class="formLabel">Dropoff Location</label>
+                        <input 
+                            id="dropoff"
+                            type="text" 
+                            class="formInput" 
+                            required 
+                            aria-label="Enter your dropoff location"
+                        />
+                    </div>
+                    
+                    <div class="formGroup">
+                        <label for="date" class="formLabel">Preferred Date</label>
+                        <input 
+                            id="date"
+                            type="date" 
+                            class="formInput" 
+                            required 
+                            aria-label="Select a preferred date"
+                        />
+                    </div>
+                    
+                    <div class="formGroup">
+                        <label for="time" class="formLabel">Preferred Time</label>
+                        <input 
+                            id="time"
+                            type="time" 
+                            class="formInput" 
+                            required 
+                            aria-label="Select a preferred time"
+                        />
+                    </div>
+                    
+                    <div class="formGroup">
+                        <label for="passengers" class="formLabel">Number of Passengers</label>
+                        <select 
+                            id="passengers"
+                            class="formInput" 
+                            required 
+                            aria-label="Select number of passengers"
+                        >
+                            <option value="">Select Passengers</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    
+                    <div class="buttonContainer">
+                        <button 
+                            type="submit" 
+                            class="primaryButton"
+                        >
+                            Find Available Rides
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

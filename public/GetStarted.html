@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Page</title>
+  <link rel="stylesheet" href="src/styles/styles.css">
+  <style>
+    /* Temporary inline styles to demonstrate the spacing and size changes */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .pageContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .navigation {
+      background-color: #222;
+      color: #fff;
+      padding: 1rem 2rem;
+      width: 100%;
+    }
+
+    .navContent {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .hero {
+      background-color: #f4f4f4;
+      padding: 4rem 2rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .heroTitle {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .heroText {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .primaryButton {
+      font-size: 1.25rem;
+      padding: 1rem 2rem;
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .primaryButton:hover {
+      background-color: #0056b3;
+    }
+
+    .stepsSection {
+      background-color: #e9ecef;
+      padding: 4rem 2rem;
+      width: 100%;
+      text-align: center;
+    }
+
+    .sectionTitle {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .stepsContainer p {
+      font-size: 1.25rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="pageContainer">
+    <!-- Navigation Section -->
+    <nav class="navigation">
+      <div class="container navContent">
+        <div class="logo">UH Uber</div>
+        <div class="navLinks">
+          <!-- You can add navigation links here -->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="heroContent">
+        <h1 class="heroTitle">Get Started</h1>
+        <p class="heroText">Experience the best solutions tailored just for you.</p>
+        <div class="buttonContainer">
+          <a href="passenger-profile.html">
+            <button class="primaryButton">Create Passenger Profile</button>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section id="steps" class="stepsSection">
+      <h2 class="sectionTitle">How It Works</h2>
+      <div class="stepsContainer">
+        <p>1. Sign up to create an account.</p>
+        <p>2. Explore your options.</p>
+        <p>3. Find and connect with a driver.</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
